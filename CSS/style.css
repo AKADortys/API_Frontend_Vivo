@@ -6,8 +6,6 @@ body{
     justify-content: center;
     align-items: center;
     align-content: flex-start;
-    height: 100vh;
-    width: 100vw;
     font-size: 1em;
     background-image: url(../Images/brown-wooden-textured-flooring-background.jpg);
     background-size: contain;
@@ -17,16 +15,14 @@ body{
     width: 15vw;
     height: 30vh;
     position: absolute;
-    /* top: 1.5em; */
-    /* left: 1em; */
+    z-index: -1;
     animation: RotateZ 5s infinite linear;
 }
 
 header{
     color: wheat;
-    position: absolute;
-    top: 0;
-    left: auto;
+    display: flex;
+    transition: transform 50ms linear;
 }
 
 #header-list {
@@ -48,11 +44,22 @@ header{
     background-color: rgba(100, 100, 99, 0.675);
 }
 
-main{
+#hidde_navbar{
+    width: 1.4em;
+    height: 1.4em;
+    border: 0.05em solid whitesmoke;
+    cursor: pointer;
+    border-radius: 100%;
     position: absolute;
-    top: auto;
-    width: 95%;
-    height: 85%;
+    left: 0.2em;
+    top: 0.5em;
+    z-index: 6;
+}
+
+main{
+    width: 95vw;
+    height: 85vh;
+    margin: 1em auto;
     padding: 0.3em;
     display: flex;
     justify-content: center;
@@ -96,12 +103,12 @@ main{
     text-align: center;
 }
 
-#accueil_coord{
+#contact_coord{
     width: 20%;
     text-align: center;
 }
 
-#accueil_coord>ul{
+#contact_coord>ul{
     list-style: none;
     padding: 0;
     margin: 0;
@@ -118,14 +125,11 @@ main{
     margin: 0;
 }
 
-#accueil_form_question{
+#contact_form_question{
     width: 30%;
 }
 
 footer{
-    position: absolute;
-    bottom: 0;
-    left: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

@@ -10,6 +10,7 @@
 
 <body>
   <img id="LogoVivo" src="Images/fondecran.png" alt="Logo Vivo" />
+  <img id="hidde_navbar" src="Images/menu-burger.png" alt="nav_hidde">
   <header>
     <ul id="header-list">
       <li data-section="accueil">Accueil</li>
@@ -52,16 +53,6 @@
           <li>Salades</li>
         </ul>
       </div>
-      <div id="accueil_coord">
-        <h3>Nos coordonnées</h3>
-        <ul>
-          <li>056/58.84.82</li>
-          <li>
-            <a href="https://maps.app.goo.gl/oRAindBqFdBJojiH9">Rue de Saint-Léger 8, 7711 Mouscron</a>
-          </li>
-          <li>noemiiea@icloud.com</li>
-        </ul>
-      </div>
       <!-- un tableau d'horaires -->
       <table id="accueil_horaire">
         <tr>
@@ -93,7 +84,13 @@
           <td>Fermé</td>
         </tr>
       </table>
-      <div id="accueil_form_question">
+    </section>
+    <section id="produit" class="contenue">
+      <h2>produit</h2>
+    </section>
+    <section id="contact" class="contenue">
+      <h2>contact</h2>
+      <div id="contact_form_question">
         <h3>Vous avez une question/remarque ?</h3>
         <form method="post" action="#">
           <p><label for="main-nom">Nom </label><input type="text" id="main-nom" /></p>       
@@ -103,12 +100,16 @@
           <p><input type="submit" value="Envoyer" id="question-submit" /></p>
         </form>
       </div>
-    </section>
-    <section id="produit" class="contenue">
-      <h2>produit</h2>
-    </section>
-    <section id="contact" class="contenue">
-      <h2>contact</h2>
+      <div id="contact_coord">
+        <h3>Nos coordonnées</h3>
+        <ul>
+          <li>056/58.84.82</li>
+          <li>
+            <a href="https://maps.app.goo.gl/oRAindBqFdBJojiH9">Rue de Saint-Léger 8, 7711 Mouscron</a>
+          </li>
+          <li>noemiiea@icloud.com</li>
+        </ul>
+      </div>
     </section>
     <section id="panier" class="contenue">
       <h2>panier</h2>
