@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Au P'tit Vivo</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+
+<body>
+  <img id="LogoVivo" src="Images/fondecran.png" alt="Logo Vivo" />
+  <header>
+    <ul id="header-list">
+      <li data-section="accueil">Accueil</li>
+      <li data-section="produit">Nos Produits</li>
+      <li data-section="contact">Contact</li>
+      <li data-section="panier">Panier</li>
+      <li data-section="connexion">Connexion</li>
+    </ul>
+  </header>
+  <main>
+    <h1 id="title">Au P'tit Vivo</h1>
+    <section id="accueil" class="contenue">
+      <h2>accueil</h2>
+      <!-- Cette section contiendras les historique de l'entreprise, les message éventuels et images du personnel/magason etc -->
+      <img src="Images/photosimon.png" alt="Photo du chef" />
+      <div id="accueil_present">
+        <h3>Présentation du chef !</h3>
+        <p>
+          Après de nombreuses années au service du Vivo.le jeune Simon a
+          decidé de continuer le services traiteur au sein de l'entité de
+          Dottignies.
+        </p>
+        <p>
+          Il met toute son expérience et son professionnalisme au service des
+          clients par la préparation des repas à emporter,en gardant le
+          savoir-faire et la qualité des produits Vivo.
+        </p>
+        <p>
+          C'est en hommage à ses anciens employeurs que Simon a appelé son
+          service traiteur le P'tit Vivo.
+        </p>
+      </div>
+      <div id="accueil_offre">
+        <h3>Nos offres</h3>
+        <ul>
+          <li>Menu spécial du jour</li>
+          <li>Menu à la carte</li>
+          <li>Repas à emporter</li>
+          <li>Boissons</li>
+          <li>Salades</li>
+        </ul>
+      </div>
+      <div id="accueil_coord">
+        <h3>Nos coordonnées</h3>
+        <ul>
+          <li>056/58.84.82</li>
+          <li>
+            <a href="https://maps.app.goo.gl/oRAindBqFdBJojiH9">Rue de Saint-Léger 8, 7711 Mouscron</a>
+          </li>
+          <li>noemiiea@icloud.com</li>
+        </ul>
+      </div>
+      <!-- un tableau d'horaires -->
+      <table id="accueil_horaire">
+        <tr>
+          <td>Lundi</td>
+          <td>10H00-14H00 & 16H00-19H00</td>
+        </tr>
+        <tr>
+          <td>Mardi</td>
+          <td>10H00-14H00 & 16H00-19H00</td>
+        </tr>
+        <tr>
+          <td>Mercredi</td>
+          <td>10H00-14H00 & 16H00-19H00</td>
+        </tr>
+        <tr>
+          <td>Jeudi</td>
+          <td>10H00-14H00 & 16H00-19H00</td>
+        </tr>
+        <tr>
+          <td>Vendredi</td>
+          <td>10H00-14H00 & 16H00-19H00</td>
+        </tr>
+        <tr>
+          <td>Samedi</td>
+          <td>Fermé</td>
+        </tr>
+        <tr>
+          <td>Dimanche</td>
+          <td>Fermé</td>
+        </tr>
+      </table>
+      <div id="accueil_form_question">
+        <h3>Vous avez une question/remarque ?</h3>
+        <form method="post" action="#">
+          <p><label for="main-nom">Nom </label><input type="text" id="main-nom" /></p>       
+          <p><label for="main-prenom">Prénom </label><input type="text" id="main-prenom" /></p>
+          <p><label for="main-question">Votre question </label></p>
+          <p><textarea id="main-question">Votre question ici</textarea></p>         
+          <p><input type="submit" value="Envoyer" id="question-submit" /></p>
+        </form>
+      </div>
+    </section>
+    <section id="produit" class="contenue">
+      <h2>produit</h2>
+    </section>
+    <section id="contact" class="contenue">
+      <h2>contact</h2>
+    </section>
+    <section id="panier" class="contenue">
+      <h2>panier</h2>
+    </section>
+    <section id="connexion" class="contenue">
+      <h2>connexion</h2>
+      <form action="">
+        <p><label for="mail">Votre adresse mail:</label><input type="text" id="mail"></p>
+        <p><label for="mdp">Votre mot de passe:</label><input type="password" id="mdp"></p>
+        <input type="submit" value="Se connecter"> <input type="reset" value="Annuler">
+        <p>Vous n'avez pas de compte ? Créez en un <a href="sign_in.html">ici</a> !</p>
+    </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2021 Au P'tit Vivo. Tous droits réservés.</p>
+    <div id="socialMedia">
+      <a href="#"><img src="Images/facebook.png" alt="facebook" /></a>
+      <a href="#"><img src="Images/instagram.png" alt="instagram" /></a>
+    </div>
+  </footer>
+  <script src="JS/header.js"></script>
+</body>
+
+</html>
