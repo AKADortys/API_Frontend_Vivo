@@ -9,7 +9,16 @@
 </head>
 
 <body>
-  <p class="rotate">Newsletter</p>
+  <div id="newslettre">
+    <form method="post" action="#">
+      <p><label for="main-nom" required>Nom </label><input type="text" id="main-nom" /></p>       
+      <p><label for="main-prenom" required>Prénom </label><input type="text" id="main-prenom" /></p>
+      <p><label for="main-question">Votre question </label></p>
+      <p><textarea id="main-question" placeholder="Votre question ici" required></textarea></p>         
+      <p><input type="submit" value="Envoyer" id="question-submit" /></p>
+    </form>
+  </div>
+  <span class="rotate">Newsletter</span>
   <img id="LogoVivo" src="Images/fondecran.png" alt="Logo Vivo" />
   <img id="hidde_navbar" src="Images/menu-burger.png" alt="nav_hidde">
   <header>
@@ -97,16 +106,6 @@
     </section>
     <section id="contact" class="contenue">
       <h2>contact</h2>
-      <div id="contact_form_question">
-        <h3>Vous avez une question/remarque ?</h3>
-        <form method="post" action="#">
-          <p><label for="main-nom" required>Nom </label><input type="text" id="main-nom" /></p>       
-          <p><label for="main-prenom" required>Prénom </label><input type="text" id="main-prenom" /></p>
-          <p><label for="main-question">Votre question </label></p>
-          <p><textarea id="main-question" placeholder="Votre question ici" required></textarea></p>         
-          <p><input type="submit" value="Envoyer" id="question-submit" /></p>
-        </form>
-      </div>
       <div id="contact_coord">
         <h3>Nos coordonnées</h3>
         <ul>
@@ -139,6 +138,7 @@
     </div>
   </footer>
   <script src="JS/header.js"></script>
+  <script src="JS/newslettre.js"></script>
 </body>
 
 </html>

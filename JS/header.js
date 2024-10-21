@@ -37,9 +37,9 @@ Array.from(list_header.children).forEach(function(element) {
         const id = this.getAttribute('data-section');
         const section = document.getElementById(id);
         title.style.display = 'none';
-        section.style.display = 'flex'; // Afficher l'élément immédiatement
+        section.style.display = 'flex';
         setTimeout(function(){
             section.classList.add('active');
-        }, 10); // Laisser un petit délai avant de lancer l'animation d'opacité
+        }, 10);
     })
 })
