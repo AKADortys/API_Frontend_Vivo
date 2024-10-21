@@ -4,20 +4,14 @@ const title = document.getElementById('title');
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const hidde_navbar = document.getElementById('hidde_navbar');
-let navbarIsOpen = true;
+let navbarIsOpen = false;
 
 hidde_navbar.addEventListener('click', function(){
     if(navbarIsOpen){
-        header.style.transform = 'translateY(-20vh)';
-        setTimeout(function(){
-            header.style.display = 'none';
-        }, 200)
+        header.classList.remove('navbar-closed');
         navbarIsOpen = false;
     } else {
-        header.style.display = 'flex';
-        setTimeout(function(){
-            header.style.transform = 'translateY(0vh)';
-        }, 50)
+        header.classList.add('navbar-closed');
         navbarIsOpen = true;
     }
 })
@@ -25,8 +19,8 @@ hidde_navbar.addEventListener('click', function(){
 
 function closeSections(){
     section_main.forEach(function(section){
-        section.style.display = 'none';
-        section.style.opacity = '0';
+        section.classList.remove('active');
+        section.style.display= 'none';
         title.style.display = 'block';
         Array.from(list_header.children).forEach(function(element) {
             element.style.backgroundColor ="";
@@ -40,13 +34,12 @@ Array.from(list_header.children).forEach(function(element) {
     element.addEventListener('click', function(){
         closeSections();
         element.style.backgroundColor ="rgba(100, 100, 99, 0.675)";
-        element.style.border = "0.1em solid gold";
         const id = this.getAttribute('data-section');
         const section = document.getElementById(id);
-        section.style.display = 'flex';
         title.style.display = 'none';
+        section.style.display = 'flex'; // Afficher l'élément immédiatement
         setTimeout(function(){
-            section.style.opacity = '1';
-        }, 100);
+            section.classList.add('active');
+        }, 10); // Laisser un petit délai avant de lancer l'animation d'opacité
     })
 })
