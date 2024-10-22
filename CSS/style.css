@@ -22,6 +22,8 @@ h3{
     padding: 0.1em;
     background-color: red;
     font-weight: bold;
+    position: absolute;
+    top: 1%;
 }
 
 #LogoVivo{
@@ -36,11 +38,16 @@ h3{
     font-size: 1em;
     display: none;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.844);
     color: wheat;
     padding: 0.3em;
     opacity: 0;
     transition: opacity 0.6s ease;
+    align-items: center;
+    width: 60vw;
+}
+
+#newslettre table{
+    background-color: grey;
 }
 
 #newslettre td{
@@ -49,7 +56,9 @@ h3{
 
 #newslettre>section{
     display: flex;
+    background-color: rgba(0, 0, 0, 0.822);
     flex-wrap: wrap;
+    width: 50%;
     justify-content: space-evenly;
     align-items: center;
     align-content: center;
@@ -59,6 +68,7 @@ h3{
 #newslettre>section>ul{
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 #newslettre>section>ul>li{
@@ -132,10 +142,15 @@ header.navbar-closed{
     left: 0.2em;
     top: 0.5em;
     z-index: 6;
+    transition: transform 0.5s ease;
+}
+
+#hidde_navbar:hover{
+    transform: scale(1.1);
 }
 
 main{
-    width: 95vw;
+    width: 92vw;
     height: 85vh;
     margin: 1em auto;
     padding: 0.3em;
@@ -145,6 +160,11 @@ main{
     align-content: center;
     background-color: rgba(100, 100, 99, 0.675);
     overflow: auto;
+    transition: height 0.5s ease-in;
+}
+
+main.main-shifted{
+    height: 95vh;
 }
 
 .contenue {

@@ -10,9 +10,17 @@ hidde_navbar.addEventListener('click', function(){
     if(navbarIsOpen){
         header.classList.remove('navbar-closed');
         navbarIsOpen = false;
+        setTimeout(function(){
+            header.style.display = 'flex';
+        },50)
+        main.classList.remove('main-shifted');
     } else {
-        header.classList.add('navbar-closed');
+        header.style.display = 'none';
+        setTimeout(function(){
+            header.classList.add('navbar-closed');
+        },50)
         navbarIsOpen = true;
+        main.classList.add('main-shifted');
     }
 })
 
@@ -24,7 +32,6 @@ function closeSections(){
         title.style.display = 'block';
         Array.from(list_header.children).forEach(function(element) {
             element.style.backgroundColor ="";
-            element.style.border = "";
         })
     })
 };
