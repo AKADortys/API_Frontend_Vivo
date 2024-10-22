@@ -8,16 +8,16 @@ let navbarIsOpen = false;
 
 hidde_navbar.addEventListener('click', function(){
     if(navbarIsOpen){
-        header.classList.remove('navbar-closed');
+        header.style.display = 'flex';
         navbarIsOpen = false;
         setTimeout(function(){
-            header.style.display = 'flex';
+            header.classList.remove('navbar-closed');
         },50)
         main.classList.remove('main-shifted');
     } else {
-        header.style.display = 'none';
+        header.classList.add('navbar-closed');
         setTimeout(function(){
-            header.classList.add('navbar-closed');
+            header.style.display = 'none';
         },50)
         navbarIsOpen = true;
         main.classList.add('main-shifted');
