@@ -1,0 +1,22 @@
+
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-end;
+    color: wheat;
+    text-align: center;
+    padding-top: 0.2em;
+}
+
+footer img{
+    margin: 0 0.1em;
+    width: 2vw;
+    height: 4vh;
+}
+
+footer img:hover{
+    cursor: pointer;
+    animation: shake 1.3s ease-in-out;
+}

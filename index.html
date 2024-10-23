@@ -1,168 +1,23 @@
 <!doctype html>
 <html lang="fr">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Au P'tit Vivo</title>
-  <link rel="stylesheet" href="CSS/style.css" />
-</head>
-
-<body>
-  <div id="newslettre">
-    <button class="close_button" onclick="closeNewsletter()">X</button>
-    <form action="newsletter-create.js" method="post">
-      <table>
-        <th colspan="2">Inscription à la Newsletter :</th>
-        <tr>
-          <td><label for="nom">Nom </label></td>
-          <td><input type="text" class="footer-form-input" id="nom" name="nom"></td>
-        </tr>
-        <tr>
-          <td><label for="prenom">Prénom </label></td>
-          <td><input type="text" class="footer-form-input" id="prenom" name="prenom"></td>
-        </tr>
-        <tr>
-          <td><label for="mail">Mail </label></td>
-          <td><input type="text" class="footer-form-input" id="mail" name="mail"></td>
-        </tr>
-        <tr>
-          <td><input type="submit" value="Valider" class="news_letter_button"></td>
-          <td><input type="reset" value="Annuler" class="news_letter_button"></td>
-        </tr>
-      </table>
-    </form>
-    <section>
-    <h3>A propos de la Newsletter :</h3>
-    <ul>
-        <li>Vous tiendra au courant des menus du jour par mail.</li>
-        <li>Vous fera savoir si nous organisons des évènements particuliers.</li>
-        <li>Vous aurez l'occasion de supprimer cette inscription à tout moment via votre profil.</li>
-    </ul>
-    <img src="Images/fondecran.png" alt="Logo Au P'tit Vivo">
-</section>
-  </div>
-  <span class="rotate">Newsletter</span>
-  <img id="LogoVivo" src="Images/fondecran.png" alt="Logo Vivo" />
-  <img id="hidde_navbar" src="Images/menu-burger.png" alt="nav_hidde">
-  <header>
-    <ul id="header-list">
-      <li data-section="accueil">Accueil</li>
-      <li data-section="produit">Nos Produits</li>
-      <li data-section="contact">Contact</li>
-      <li data-section="panier">Panier</li>
-      <li data-section="connexion">Connexion</li>
-    </ul>
-  </header>
-  <main>
-    <h1 id="title">Au P'tit Vivo</h1>
-    <section id="accueil" class="contenue">
-      <h2>accueil</h2>
-      <!-- Cette section contiendras les historique de l'entreprise, les message éventuels et images du personnel/magason etc -->
-      <img src="Images/photosimon.png" alt="Photo du chef" />
-      <div id="accueil_present">
-        <h3>Présentation du chef !</h3>
-        <p>
-          Après de nombreuses années au service du Vivo.le jeune Simon a
-          decidé de continuer le services traiteur au sein de l'entité de
-          Dottignies.
-        </p>
-        <p>
-          Il met toute son expérience et son professionnalisme au service des
-          clients par la préparation des repas à emporter,en gardant le
-          savoir-faire et la qualité des produits Vivo.
-        </p>
-        <p>
-          C'est en hommage à ses anciens employeurs que Simon a appelé son
-          service traiteur le P'tit Vivo.
-        </p>
-      </div>
-      <div id="accueil_offre">
-        <h3>Nos offres</h3>
-        <ul>
-          <li>Menu spécial du jour</li>
-          <li>Menu à la carte</li>
-          <li>Repas à emporter</li>
-          <li>Boissons</li>
-          <li>Salades</li>
-        </ul>
-      </div>
-      <!-- un tableau d'horaires -->
-      <table id="accueil_horaire">
-        <thead>
-          <th>Jours</th>
-          <th>Horaires</th>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Lundi</td>
-          <td>10H00-14H00 & 16H00-19H00</td>
-        </tr>
-        <tr>
-          <td>Mardi</td>
-          <td>10H00-14H00 & 16H00-19H00</td>
-        </tr>
-        <tr>
-          <td>Mercredi</td>
-          <td>10H00-14H00 & 16H00-19H00</td>
-        </tr>
-        <tr>
-          <td>Jeudi</td>
-          <td>10H00-14H00 & 16H00-19H00</td>
-        </tr>
-        <tr>
-          <td>Vendredi</td>
-          <td>10H00-14H00 & 16H00-19H00</td>
-        </tr>
-        <tr>
-          <td>Samedi</td>
-          <td>Fermé</td>
-        </tr>
-        <tr>
-          <td>Dimanche</td>
-          <td>Fermé</td>
-        </tr>
-        </tbody>
-      </table>
-    </section>
-    <section id="produit" class="contenue">
-      <h2>produit</h2>
-    </section>
-    <section id="contact" class="contenue">
-      <h2>contact</h2>
-      <div id="contact_coord">
-        <h3>Nos coordonnées</h3>
-        <ul>
-          <li>056/58.84.82</li>
-          <li>
-            <a href="https://maps.app.goo.gl/oRAindBqFdBJojiH9">Rue de Saint-Léger 8, 7711 Mouscron</a>
-          </li>
-          <li>noemiiea@icloud.com</li>
-        </ul>
-      </div>
-    </section>
-    <section id="panier" class="contenue">
-      <h2>panier</h2>
-    </section>
-    <section id="connexion" class="contenue">
-      <h2>connexion</h2>
-      <form action="">
-        <p><label for="mail">Votre adresse mail:</label><input type="text" required id="mail"></p>
-        <p><label for="mdp">Votre mot de passe:</label><input type="password" required id="mdp"></p>
-        <input type="submit" value="Se connecter"> <input type="reset" value="Annuler">
-        <p>Vous n'avez pas de compte ? Créez en un <a href="sign_in.html">ici</a> !</p>
-    </form>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2021 Au P'tit Vivo. Tous droits réservés.</p>
-    <div id="socialMedia">
-      <a href="#"><img src="Images/facebook.png" alt="facebook" /></a>
-      <a href="#"><img src="Images/instagram.png" alt="instagram" /></a>
-    </div>
-  </footer>
-  <script src="JS/header.js"></script>
-  <script src="JS/newslettre.js"></script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="JS/fetch_html.js"></script>
+    <title>Au P'tit Vivo</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/footer.css" />
+    <link rel="stylesheet" href="CSS/header.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/keyframes.css" />
+  </head>
+  <body>
+    <div id="newslettre"></div>
+    <span class="rotate">Newsletter</span>
+    <img id="LogoVivo" src="Images/fondecran.png" alt="Logo Vivo" />
+    <img id="hidde_navbar" src="Images/menu-burger.png" alt="nav_hidde" />
+    <header></header>
+    <main></main>
+    <footer></footer>
+  </body>
 </html>

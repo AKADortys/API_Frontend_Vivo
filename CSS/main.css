@@ -1,0 +1,83 @@
+
+main{
+    width: 92vw;
+    height: 85vh;
+    margin: 1em auto;
+    padding: 0.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: rgba(100, 100, 99, 0.675);
+    overflow: auto;
+    transition: height 0.5s ease-in;
+}
+
+main.main-shifted{
+    height: 95vh;
+}
+
+.contenue {
+    display: none;
+    gap: 1em;
+    flex-wrap: wrap;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.contenue.active {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    opacity: 1;
+}
+
+.contenue>h2{
+    width: 100%;
+    text-align: center;
+}
+
+#accueil>img{
+    width: 10vw;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+}
+
+
+#accueil_present{
+    width: 60%;
+}
+
+#accueil_horaire{
+    width: 20%;
+    text-align: center;
+}
+
+#contact_coord{
+    width: 20%;
+    text-align: center;
+}
+
+#contact_coord>ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#accueil_offre{
+    width: 20%;
+    text-align: center;
+}
+
+#accueil_offre>ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#contact_form_question{
+    width: 30%;
+}
