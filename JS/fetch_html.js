@@ -16,7 +16,7 @@ Promise.all([
   });
   
   function loadAdditionalScripts() {
-    const scriptsToLoad = ['JS/header.js', 'JS/newslettre.js'];
+    const scriptsToLoad = ['JS/header.js', 'JS/newslettre.js','JS/ouverture.js'];
   
     scriptsToLoad.forEach(src => {
       const script = document.createElement('script');

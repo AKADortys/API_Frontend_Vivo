@@ -3,22 +3,25 @@ const section_main = document.querySelectorAll('.contenue');
 const title = document.getElementById('title');
 const header = document.querySelector('header');
 const main = document.querySelector('main');
+const footer = document.querySelector('footer');
 const hidde_navbar = document.getElementById('hidde_navbar');
 let navbarIsOpen = false;
 
 hidde_navbar.addEventListener('click', function(){
     if(navbarIsOpen){
         header.style.display = 'flex';
+        footer.style.display = '';
         navbarIsOpen = false;
         setTimeout(function(){
             header.classList.remove('navbar-closed');
-        },50)
+        },80)
         main.classList.remove('main-shifted');
     } else {
         header.classList.add('navbar-closed');
         setTimeout(function(){
             header.style.display = 'none';
-        },50)
+            footer.style.display = 'none';
+        },60)
         navbarIsOpen = true;
         main.classList.add('main-shifted');
     }
