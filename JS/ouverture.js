@@ -45,20 +45,20 @@ const heureActuelle = new Date(`1970-01-01T${padZero(maintenant.getHours())}:${p
 
 // Affichage du statut du magasin
 const statut = checkOpen()
-  ? "Le magasin est <span class='open'>ouvert</span>."
-  : "Le magasin est <span class='closed'>fermé</span>.";
+  ? "<p>Le magasin est <span class='open'>ouvert</span>.</p>"
+  : "<p>Le magasin est <span class='closed'>fermé</span></p>";
 document.getElementById("status").innerHTML = statut;
 
 // Mise à jour du statut toutes les minutes
 setInterval(() => {
   const statut = checkOpen()
-    ? "Le magasin est <span class='open'>ouvert</span>."
-    : "Le magasin est <span class='closed'>fermé</span>.";
+    ? "<p>Le magasin est <span class='open'>ouvert</span>.</p>"
+    : "<p>Le magasin est <span class='closed'>fermé</span></p>";
   document.getElementById("status").innerHTML = statut;
 }, 60000); // Mise à jour toutes les 60 secondes
 
 const hidde_horaire = document.getElementById("hidde_horaire");
-const status_div = document.getElementById("status");
+const status_div = document.getElementById("horaires-ouvertures");
 let statusIsOpen = false;
 
 hidde_horaire.addEventListener("click", function () {
