@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Light&display=swap');
+
 body{
     margin: 0;
     padding: 0;
@@ -9,6 +11,7 @@ body{
     font-size: 1em;
     background-image: url(../Images/brown-wooden-textured-flooring-background.jpg);
     background-size: contain;
+    font-family: cursive;
 }
 
 
@@ -17,20 +20,6 @@ h3{
     text-align: center;
 }
 
-.close_button{
-    width: 1.7em;
-    height: 1.7em;
-    padding: 0.1em;
-    background-color: red;
-    font-weight: bold;
-    position: absolute;
-    top: 1%;
-}
-
-.zoomed{
-    transform: scale(1.08);
-    transition: transform 0.5s ease;
-}
 
 #LogoVivo{
     width: 15vw;
@@ -40,149 +29,13 @@ h3{
     animation: RotateZ 5s infinite linear;
 }
 
-#newslettre{
-    font-size: 1em;
-    display: none;
-    position: fixed;
-    color: white;
-    padding: 0.3em;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    align-items: center;
-    width: 60vw;
-    z-index: 100;
-}
 
-#newslettre table{
-    background-color: grey;
-}
-
-#newslettre td{
-    padding: 2em;
-}
-
-#newslettre>section{
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.822);
-    flex-wrap: wrap;
-    width: 50%;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    padding: 0.2em;
-}
-
-#newslettre>section>ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-#newslettre>section>ul>li{
-    padding: 0.9em;
-}
-
-#newslettre>section>img{
-    width: 30%;
-}
-
-#newslettre.open{
-    opacity: 1;
-}
-
-.rotate {
-    cursor: pointer;
-    background-color: black;
-    margin: 0;
-    padding: 0.2em;
-    font-family: verdana, sans-serif;
-    transform: rotate(270deg);
-    color: aliceblue;
-    text-align: center;
-    position: absolute;
-    left: -2.2em;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.rotate:hover{
-    background-color: rgba(100, 100, 99, 0.675);
-    color: white;
-}
-
-
-#horaires-ouvertures{
-    color: white;
-    background-color: rgba(0, 0, 0, 0.641);
-    border: 0.1em solid black;
-    position: absolute;
-    left: 2.5em;
-    top: 3em;
-    transform: translateX(-50vw);
-    transition: transform 0.5s ease;
-    z-index: 100;
-}
-
-#horaires-ouvertures.open{
-    transform: translateX(0);
-}
-
-#status>p{
-    text-align: center;
-    width: 60%;
-    background-color: grey;
-    box-shadow: 5px 5px 2px 0px rgb(82, 81, 81);
-    margin: 0.2em auto;
-}
-
-#accueil_horaire{
-    width: 100%;
-    text-align: center;
-}
-
-
-#accueil_horaire td:nth-child(1){
-    background-color: rgb(132, 54, 23);
-    padding: 0.5em;
-    color: gold;
-    cursor: pointer;
-    transition: transform 0.5s ease;
-}
-
-#accueil_horaire td:nth-child(1):hover{
-    transform: scale(1.1);
-}
-
-#accueil_horaire td:nth-child(2){
-    background-color: grey;
-}
-
-
-#hidde_horaire{
-    width: 1.8em;
-    height: 1.8em;
-    padding: 0.2em;
-    background-color: rgba(100, 100, 99, 0.675);
-    cursor: pointer;
-    position: absolute;
-    left: 0.2em;
-    top: 2.8em;
-    z-index: 6;
-    transition: transform 0.5s ease;
-}
-
-#hidde_horaire:hover{
-    transform: scale(1.1);
-}
-
-.open{
-    color: greenyellow;
-}
-
-.closed{
-    color: red;
-}
 #title{
     position: absolute;
-    top: 50%;
+    top: 45%;
     margin: 0;
+    font-family: 'Love Light', cursive;
+    font-size: 4em;
+    text-shadow: 3px 3px 2px rgb(40, 40, 40);
+    animation: opacity-slide-up 0.5s 1 ease-in;
 }

@@ -3,9 +3,9 @@ main {
     height: 85vh;
     margin: 1em auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: flex-start;
-    align-content: center;
+    align-content: space-between;
     background-color: rgba(100, 100, 99, 0.675);
     transition: height 0.5s ease-in;
     overflow-y: auto; 
