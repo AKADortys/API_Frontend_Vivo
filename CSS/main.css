@@ -1,54 +1,70 @@
-
-main{
+main {
     width: 92vw;
     height: 85vh;
     margin: 1em auto;
-    padding: 0.3em;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     align-content: center;
     background-color: rgba(100, 100, 99, 0.675);
-    overflow: auto;
     transition: height 0.5s ease-in;
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
 main.main-shifted{
-    height: 90vh;
+    height: 95vh;
 }
-
 .contenue {
     display: none;
+    margin: 0;
     gap: 1em;
     flex-wrap: wrap;
     width: 100%;
+    min-height: 100%; 
+    max-height: 100%; 
     opacity: 0;
     transition: opacity 1s ease;
+    overflow-y: auto;
 }
 
 .contenue.active {
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
+    align-items: flex-start;
     opacity: 1;
 }
 
 .contenue>h2{
-    width: 100%;
+    width: 90%;
     text-align: center;
+    font-size: 2em;
 }
 
 #accueil>img{
-    width: 10vw;
+    width: 15%;
     max-width: 500px;
     height: auto;
     object-fit: cover;
+    border: 0.1em solid black;
+    border-radius: 100%;
+    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
+    transition: transform 0.5s ease-in-out;
+}
+
+#accueil>img:hover{
+    transform: scale(1.1);
 }
 
 
 #accueil_present{
     width: 60%;
+    padding: 0.1em 0.2em;
+    background-color: grey;
+    border: 0.1em solid black;
+    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
+    text-align: center;
+    color: gold;
 }
 
 #accueil_horaire{
@@ -70,6 +86,15 @@ main.main-shifted{
 #accueil_offre{
     width: 20%;
     text-align: center;
+    background-color: rgb(132, 54, 23);
+    color: gold;
+    border: 0.1em solid black;
+    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
+}
+
+#accueil_offre>h3{
+    color: white;
+    margin: 0;
 }
 
 #accueil_offre>ul{

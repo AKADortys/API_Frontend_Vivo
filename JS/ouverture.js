@@ -10,9 +10,9 @@ const horaires = {
 };
 
 // Fonction pour vérifier si l'heure actuelle est dans une plage d'ouverture
-function estDansLesHoraires(heureActuelle, plagesHoraires) {
-  for (let plage of plagesHoraires) {
-    let [debut, fin] = plage.split("-");
+function confirmOpen(heureActuelle, plagesHoraires) {
+  for (let horaire of plagesHoraires) {
+    let [debut, fin] = horaire.split("-");
     debut = new Date(`1970-01-01T${debut}:00`);
     fin = new Date(`1970-01-01T${fin}:00`);
 
@@ -24,7 +24,7 @@ function estDansLesHoraires(heureActuelle, plagesHoraires) {
 }
 
 // Fonction pour vérifier si le magasin est ouvert
-function verifierOuverture() {
+function checkOpen() {
   const maintenant = new Date();
   const jour = maintenant.getDay(); // 0 = Dimanche, 1 = Lundi, etc.
   function padZero(number) {
@@ -40,18 +40,18 @@ const heureActuelle = new Date(`1970-01-01T${padZero(maintenant.getHours())}:${p
     return false; // Fermé
   }
 
-  return estDansLesHoraires(heureActuelle, plagesHoraires);
+  return confirmOpen(heureActuelle, plagesHoraires);
 }
 
 // Affichage du statut du magasin
-const statut = verifierOuverture()
+const statut = checkOpen()
   ? "Le magasin est <span class='open'>ouvert</span>."
   : "Le magasin est <span class='closed'>fermé</span>.";
 document.getElementById("status").innerHTML = statut;
 
 // Mise à jour du statut toutes les minutes
 setInterval(() => {
-  const statut = verifierOuverture()
+  const statut = checkOpen()
     ? "Le magasin est <span class='open'>ouvert</span>."
     : "Le magasin est <span class='closed'>fermé</span>.";
   document.getElementById("status").innerHTML = statut;

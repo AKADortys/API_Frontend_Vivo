@@ -18,6 +18,7 @@ newsletter.addEventListener('click', function () {
 
 function closeNewsletter(){
     openNewsletter.classList.remove('open');
+    openNewsletter.style.display = '';
     newsletter.style.display = 'block';
     newsletterIsOpen = false;
 };

@@ -1,3 +1,4 @@
+const logoVivo = document.getElementById('LogoVivo');
 const list_header = document.getElementById('header-list');
 const section_main = document.querySelectorAll('.contenue');
 const title = document.getElementById('title');
@@ -33,6 +34,7 @@ function closeSections(){
         section.classList.remove('active');
         section.style.display= 'none';
         title.style.display = 'block';
+        logoVivo.style.display = 'block'; 
         Array.from(list_header.children).forEach(function(element) {
             element.style.backgroundColor ="";
         })
@@ -47,6 +49,7 @@ Array.from(list_header.children).forEach(function(element) {
         const id = this.getAttribute('data-section');
         const section = document.getElementById(id);
         title.style.display = 'none';
+        logoVivo.style.display = 'none';
         section.style.display = 'flex';
         setTimeout(function(){
             section.classList.add('active');
