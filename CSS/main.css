@@ -6,7 +6,7 @@ main {
     justify-content: space-around;
     align-items: flex-start;
     align-content: space-between;
-    background-color: rgba(100, 100, 99, 0.675);
+    /* background-color: rgba(100, 100, 99, 0.675); */
     transition: height 0.5s ease-in;
     overflow-y: auto; 
     overflow-x: hidden; 
@@ -18,7 +18,6 @@ main.main-shifted{
 .contenue {
     display: none;
     margin: 0;
-    gap: 1em;
     flex-wrap: wrap;
     width: 100%;
     min-height: 100%; 
@@ -41,6 +40,20 @@ main.main-shifted{
     font-size: 2em;
 }
 
+.content-child{
+    margin: 0;
+    padding: 0.5em;
+    border: 0.1em solid black;
+    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
+    background-color: rgba(100, 100, 99, 0.675);
+    transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+.content-child:hover{
+    background-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+}
+
 #accueil>img{
     width: 15%;
     max-width: 500px;
@@ -59,39 +72,67 @@ main.main-shifted{
 
 #accueil_present{
     width: 60%;
-    padding: 0.1em 0.2em;
-    background-color: grey;
-    border: 0.1em solid black;
-    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
     text-align: center;
-    color: gold;
 }
 
 
 #contact_coord{
-    width: 20%;
     text-align: center;
 }
 
 #contact_coord>ul{
     list-style: none;
-    padding: 0;
+    padding: 0.2em;
     margin: 0;
+    background-color: rgba(128, 128, 128, 0.697);
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 1);
+    border: 0.2em outset goldenrod;
 }
+
+#contact_coord>ul>li{
+    padding: 0.1em;
+}
+
+#contact_coord a{
+    color: gold;
+    text-decoration: none;
+    transition: color 0.5s ease-in-out;
+}
+
+#contact_coord a:hover{
+    color: blue;
+}
+
+#contact_coord>ul>li>img{
+    width: 2em;
+    height: auto;
+}
+
+#Form_question{
+    width: 30%;
+}
+
+#Form_question>table{
+    width: 100%;
+    text-align: center;
+    padding: 0.2em;
+    margin: 0;
+    color: gold;
+    background-color: rgba(128, 128, 128, 0.697);
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 1);
+    border: 0.2em outset goldenrod;
+}
+
+#Form_question>table td{
+    padding: 0.5em 0;
+}
+
 
 #accueil_offre{
     width: 20%;
     text-align: center;
-    background-color: rgb(132, 54, 23);
-    color: gold;
-    border: 0.1em solid black;
-    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
 }
 
-#accueil_offre>h3{
-    color: white;
-    margin: 0;
-}
 
 #accueil_offre>ul{
     list-style: none;

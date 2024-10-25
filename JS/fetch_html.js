@@ -16,13 +16,15 @@ Promise.all([
   });
   
   function loadAdditionalScripts() {
-    const scriptsToLoad = ['JS/header.js', 'JS/newslettre.js','JS/ouverture.js'];
+    const scriptsToLoad = ['JS/header.js', 'JS/newslettre.js','JS/ouverture.js', 'JS/create_user.js'];
   
     scriptsToLoad.forEach(src => {
-      const script = document.createElement('script');
-      script.src = src;
-      script.defer = true;
-      document.body.appendChild(script);
+      setTimeout(() => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.defer = true;
+        document.body.appendChild(script);
+      }, 50);
     });
   }
   
