@@ -12,6 +12,10 @@
         width: 380px;
     }
 
+    .content-child:hover{
+        transform: scale(1);
+    }
+
     #accueil>img{
         width: 50%;
     }
@@ -23,10 +27,6 @@
     #accueil_present {
         width: 100%;
 
-    }
-
-    .rotate{
-        display: none;
     }
 
     footer img {
@@ -44,6 +44,15 @@
     }
 
     #Form_question{
+        width: 100%;
+    }
+
+    #newslettre{
+        width: 90%;
+        flex-wrap: wrap;
+    }
+
+    #newslettre>section{
         width: 100%;
     }
 }

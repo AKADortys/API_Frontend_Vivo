@@ -10,6 +10,8 @@ Promise.all([
     document.querySelector("header").innerHTML = header;
     document.querySelector("main").innerHTML = main;
     document.querySelector("footer").innerHTML = footer;
+
+    console.log("partials loaded");
     
     // Charger les autres scripts après l'insertion HTML
     loadAdditionalScripts();
@@ -24,7 +26,7 @@ Promise.all([
         script.src = src;
         script.defer = true;
         document.body.appendChild(script);
-      }, 50);
+      }, 10);
     });
   }
   

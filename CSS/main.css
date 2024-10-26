@@ -1,4 +1,5 @@
 main {
+    padding: 0.1em;
     width: 92vw;
     height: 85vh;
     margin: 1em auto;
@@ -13,7 +14,7 @@ main {
 }
 
 main.main-shifted{
-    height: 95vh;
+    height: 100vh;
 }
 .contenue {
     display: none;
