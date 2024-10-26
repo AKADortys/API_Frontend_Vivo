@@ -62,21 +62,21 @@
       <li>noemiiea@icloud.com</li>
     </ul>
   </div>
-  <form id="Form_question" method="post" action="#" class="content-child">
+  <form id="Form_question" method="post" class="content-child">
     <h3>Vous avez une question/remarque ?</h3>
     <table>
       <tr>
-        <td><label for="main-nom">Nom </label></td>
-        <td><input type="text" id="main-nom" /></td>
+        <td>Nom </td>
+        <td><input type="text" id="question-nom" /></td>
       </tr>
       <tr>
-        <td><label for="main-prenom">Prénom </label></td>
-        <td><input type="text" id="main-prenom" /></td>
+        <td>Prénom </td>
+        <td><input type="text" id="question-prenom" /></td>
       </tr>
       <tr>
-        <td><label for="main-question">Votre question </label></td>
+        <td>Votre question </td>
         <td>
-          <textarea id="main-question">Votre question ici</textarea>
+          <textarea id="question">Votre question ici</textarea>
         </td>
       </tr>
       <tr>
@@ -91,48 +91,44 @@
   <h2>panier</h2>
 </section>
 <section id="connexion" class="contenue">
-  <form action="" class="content-child">
+  <form class="content-child" id="connect_form" method="post">
     <p>
-      <label for="mail">Votre adresse mail:</label
+      Votre adresse mail:</label
       ><input type="text" required id="mail" />
     </p>
     <p>
-      <label for="mdp">Votre mot de passe:</label
+      Votre mot de passe:</label
       ><input type="password" required id="mdp" />
     </p>
     <input type="submit" value="Se connecter" />
     <input type="reset" value="Annuler" />
-    <p>
-      Vous n'avez pas de compte ? Créez en un
-      <a href="sign_in.html">ici</a> !
-    </p>
   </form>
   <form method="post" id="Sign_In-form" class="content-child">
     <h2>Création d'un compte utilisateur</h2>
     <table>
         <tr>
-            <td><label for="nom-signin">Nom :</label></td>  <td><input type="text" id="nom-signin" placeholder="Votre nom" class="Sign_In-form-input"></td>
+            <td>Nom :</td>  <td><input type="text" id="nom-signin" placeholder="Votre nom"></td>
         </tr>
         <tr>
-            <td><label for="prenom-signin">Prénom :</label></td>  <td><input type="text" id="prenom-signin" placeholder="Votre prénom" class="Sign_In-form-input"></td>
+            <td>Prénom :</td>  <td><input type="text" id="prenom-signin" placeholder="Votre prénom"></td>
         </tr>
         <tr>
-            <td><label for="mdp-signin">Votre mot de passe :</label></td> <td><input type="password" id="mdp-signin" placeholder="6 caractères minimum" class="Sign_In-form-input"></td>
+            <td>Votre mot de passe :</td> <td><input type="password" id="mdp-signin" placeholder="6 caractères minimum"></td>
         </tr>
         <tr>
-            <td><label for="mdp_confirm-signin">Confirmer votre mot de passe :</label></td> <td><input type="password" id="mdp_confirm-signin" placeholder="6 caractères minimum" class="Sign_In-form-input"></td>
+            <td>Confirmer votre mot de passe :</td> <td><input type="password" id="mdp_confirm-signin" placeholder="6 caractères minimum"></td>
         </tr>
         <tr>
-            <td><label for="telephone-signin">N° de téléphone :</label></td> <td><input type="text" id="telephone-signin" placeholder="ex:0411223344" class="Sign_In-form-input"></td>
+            <td>N° de téléphone :</td> <td><input type="text" id="telephone-signin" placeholder="ex:0411223344"></td>
         </tr>
         <tr>
-            <td><label for="mail-signin">Votre addresse mail</label></td>  <td><input type="text" id="mail-signin" placeholder="ex:MonMail@gmail.com" class="Sign_In-form-input"></td>
+            <td>Votre addresse mail</td>  <td><input type="text" id="mail-signin" placeholder="ex:MonMail@gmail.com"></td>
         </tr>
         <tr>
-            <td><label for="news_letter-signin">Inscription à la Newsletter</label></td> <td><input type="checkbox" id="news_letter-signin"></td>
+            <td>Inscription à la Newsletter</td> <td><input type="checkbox" id="news_letter-signin"></td>
         </tr>
         <tr>
-            <td><input type="submit" value="S'inscrire" class="Sign_In-form-button"></td> <td><input type="reset" class="Sign_In-form-button"></td>
+            <td><input type="submit" value="S'inscrire" ></td> <td><input type="reset" ></td>
         </tr>
     </table>
     <section id="about">

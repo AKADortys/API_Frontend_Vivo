@@ -18,7 +18,15 @@ Promise.all([
   });
   
   function loadAdditionalScripts() {
-    const scriptsToLoad = ['JS/header.js', 'JS/newslettre.js','JS/ouverture.js', 'JS/create_user.js'];
+    const scriptsToLoad = 
+    [
+      'JS/header.js',
+      'JS/newslettre.js',
+      'JS/ouverture.js',
+      'JS/create_user.js',
+      'JS/connect_user.js',
+      'JS/question_form.js'
+    ];
   
     scriptsToLoad.forEach(src => {
       setTimeout(() => {
