@@ -1,3 +1,4 @@
+export function horaireListeners(){
 // Horaires d'ouverture du magasin
 const horaires = {
   1: ["10:00-14:00", "15:30-18:00"], // Lundi
@@ -70,3 +71,4 @@ hidde_horaire.addEventListener("click", function () {
     status_div.classList.remove("open");
   }
 });
+}

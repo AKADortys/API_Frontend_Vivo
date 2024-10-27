@@ -1,3 +1,5 @@
+export function connectFormListeners(){
+
 const connect_form = document.getElementById("connect_form");
 
 connect_form.addEventListener("submit", function(event) {
@@ -36,4 +38,4 @@ connect_form.addEventListener("submit", function(event) {
         // .catch(error=>console.error(error))
         
     }
-});
+})}

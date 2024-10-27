@@ -1,3 +1,5 @@
+
+export function loadPartials(){
 // Charger les fichiers partiels HTML
 Promise.all([
     fetch("Partials/newsletter.html").then(response => response.text()),
@@ -13,29 +15,6 @@ Promise.all([
 
     console.log("partials loaded");
     
-    // Charger les autres scripts après l'insertion HTML
-    loadAdditionalScripts();
   });
   
-  function loadAdditionalScripts() {
-    const scriptsToLoad = 
-    [
-      'JS/header.js',
-      'JS/newslettre.js',
-      'JS/ouverture.js',
-      'JS/create_user.js',
-      'JS/connect_user.js',
-      'JS/question_form.js',
-      'JS/indexdb.js'
-    ];
-  
-    scriptsToLoad.forEach(src => {
-      setTimeout(() => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.defer = true;
-        document.body.appendChild(script);
-      }, 10);
-    });
-  }
-  
+}

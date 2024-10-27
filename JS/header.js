@@ -1,3 +1,5 @@
+export function headerListeners(){
+
 const logoVivo = document.getElementById('LogoVivo');
 const list_header = document.getElementById('header-list');
 const section_main = document.querySelectorAll('.contenue');
@@ -56,3 +58,4 @@ Array.from(list_header.children).forEach(function(element) {
         }, 10);
     })
 })
+}

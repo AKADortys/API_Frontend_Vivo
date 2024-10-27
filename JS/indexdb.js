@@ -1,3 +1,4 @@
+export function initDB(){
 let db;
 const request = indexedDB.open("database", 1);
 
@@ -24,4 +25,4 @@ request.onsuccess = function(event) {
 
 request.onerror = function(event) {
   console.error("Erreur d'ouverture de la base de données", event.target.errorCode);
-};
+}}

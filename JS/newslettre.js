@@ -1,4 +1,7 @@
+export function newsletterListener(){
+
 const newsletter = document.querySelector('.rotate');
+const buttonclose = document.getElementById('close_newsletter');
 const openNewsletter = document.getElementById('newslettre');
 let newsletterIsOpen = false
 
@@ -12,13 +15,18 @@ newsletter.addEventListener('click', function () {
         newsletterIsOpen = true;
     }
     else{
-        closeNewsletter();
+        openNewsletter.classList.remove('open');
+        openNewsletter.style.display = '';
+        newsletter.style.display = 'block';
+        newsletterIsOpen = false;
     }
-});
 
-function closeNewsletter(){
-    openNewsletter.classList.remove('open');
-    openNewsletter.style.display = '';
-    newsletter.style.display = 'block';
-    newsletterIsOpen = false;
-};
+    buttonclose.addEventListener('click', function () {
+        openNewsletter.classList.remove('open');
+        openNewsletter.style.display = '';
+        newsletter.style.display = 'block';
+        newsletterIsOpen = false;
+    })
+
+    
+})};
