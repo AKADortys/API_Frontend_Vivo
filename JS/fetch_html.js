@@ -25,7 +25,8 @@ Promise.all([
       'JS/ouverture.js',
       'JS/create_user.js',
       'JS/connect_user.js',
-      'JS/question_form.js'
+      'JS/question_form.js',
+      'JS/indexdb.js'
     ];
   
     scriptsToLoad.forEach(src => {

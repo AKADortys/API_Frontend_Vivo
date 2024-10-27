@@ -38,7 +38,7 @@
       //     email
       //   };
   
-      //   fetch('', { 
+      //   fetch('/api/gestion', { 
       //     method: 'POST',
       //     headers: {
       //       'Content-Type': 'application/json'
