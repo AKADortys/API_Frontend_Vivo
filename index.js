@@ -7,15 +7,22 @@ import { createUserListeners } from "./JS/create_user.js";
 import { questionListener } from "./JS/question_form.js";
 import { horaireListeners } from "./JS/ouverture.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  initDB(); // Initialise la base de données
-  loadPartials(); // importe les partials html
-  setTimeout(() => {
-      newsletterListener(); // écoute les événements sur la newsletter
-      headerListeners(); // écoute les événements sur le header
-      connectFormListeners(); // écoute les événements sur le formulaire de connexion
-      createUserListeners(); // écoute les événements sur le formulaire d'inscription
-      questionListener(); // écoute les événements sur le formulaire de questionnaire
-      horaireListeners(); // écoute les événements sur les horaires d'ouverture
-  }, 200);
+document.addEventListener("DOMContentLoaded", async () => {
+  try
+  {
+    const db = await initDB(); // Initialise la base de données
+    await loadPartials(); // Charge les partials HTML
+  
+    // Une fois les partials chargés, ajouter les écouteurs
+    newsletterListener();
+    headerListeners();
+    connectFormListeners();
+    createUserListeners();
+    questionListener();
+    horaireListeners();
+  }
+  catch (error)
+  {
+    console.error("Une erreur est survenue :" + error.message);
+  }
 });
