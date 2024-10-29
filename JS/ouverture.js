@@ -9,7 +9,6 @@ const horaires = {
   6: [], // Samedi (fermé)
   0: [], // Dimanche (fermé)
 };
-
 // Fonction pour vérifier si l'heure actuelle est dans une plage d'ouverture
 function confirmOpen(heureActuelle, plagesHoraires) {
   for (let horaire of plagesHoraires) {
