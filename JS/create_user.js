@@ -38,7 +38,7 @@ export function createUserListeners() {
         mail: mail
       };
 
-      fetch('http://localhost:3000/user/addUser', {
+      fetch('http://localhost:3000/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

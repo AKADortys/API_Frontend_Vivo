@@ -21,7 +21,7 @@ export function connectFormListeners() {
         } else {
             const data = { mail: mail, pwd: password };
 
-            fetch('http://localhost:3000/user/connect', {
+            fetch('http://localhost:3000/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,8 +31,7 @@ export function connectFormListeners() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {  // Si la connexion est réussie
-                    console.log(data.utilisateur)
-                    storeUserData(data.utilisateur);  // Stockage dans IndexedDB
+                    storeUserData(data.user);  // Stockage dans IndexedDB
                 } else {
                     alert("Erreur de connexion : " + data.message);
                 }
@@ -55,7 +54,8 @@ async function storeUserData(user) {
             mail: user.mail,
             phone: user.phone,
             createdAt: user.createdAt,
-            updatedAt: user.updatedAt
+            updatedAt: user.updatedAt,
+            accessToken : user.accessToken
         });
 
         transaction.oncomplete = () => {

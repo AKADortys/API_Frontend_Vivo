@@ -1,6 +1,6 @@
 export function initDB() {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open("database", 5);
+    const request = indexedDB.open("database", 7);
 
     request.onupgradeneeded = function(event) {
       const db = event.target.result;
@@ -13,12 +13,12 @@ export function initDB() {
       utilisateur.createIndex("prenom", "prenom", { unique: false });
       utilisateur.createIndex("phone", "phone", { unique: false });
       utilisateur.createIndex("createdAt", "createdAt", { unique: false });
-      utilisateur.createIndex("updatedAt", "updatedAt", { unique: false });      
+      utilisateur.createIndex("updatedAt", "updatedAt", { unique: false });     
+      utilisateur.createIndex("acessToken","acessToken", { unique: true }); 
 
       const produit = db.createObjectStore("produits", { keyPath: "id", autoIncrement: true });
       produit.createIndex("nom", "nom", { unique: false });
       produit.createIndex("prix", "prix", { unique: false });
-      produit.createIndex("quantite", "quantite", { unique: false });
 
       const panier = db.createObjectStore("panier", { keyPath: "id", autoIncrement: true });
       panier.createIndex("produit_id", "produit_id", { unique: false });
