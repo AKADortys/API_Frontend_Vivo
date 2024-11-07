@@ -1,4 +1,4 @@
-import { initDB } from './indexdb.js';
+import { initDB } from '../Data/indexdb.js';
 
 export function connectFormListeners() {
     const connect_form = document.getElementById("connect_form");
@@ -54,8 +54,7 @@ async function storeUserData(user) {
             mail: user.mail,
             phone: user.phone,
             createdAt: user.createdAt,
-            updatedAt: user.updatedAt,
-            accessToken : user.accessToken
+            updatedAt: user.updatedAt
         });
 
         transaction.oncomplete = () => {

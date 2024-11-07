@@ -1,11 +1,11 @@
-import { initDB } from "./JS/indexdb.js";
+import { initDB } from "./Data/indexdb.js";
 import { loadPartials } from "./JS/fetch_html.js";
-import { newsletterListener } from "./JS/newslettre.js";
-import { headerListeners } from "./JS/header.js";
+import { newsletterListener } from "./Partials/newslettre.js";
+import { headerListeners } from "./Partials/header.js";
 import { connectFormListeners } from "./JS/connect_user.js";
 import { createUserListeners } from "./JS/create_user.js";
 import { questionListener } from "./JS/question_form.js";
-import { horaireListeners } from "./JS/ouverture.js";
+import { horaireListeners } from "./Partials/ouverture.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     createUserListeners();
     questionListener();
     horaireListeners();
+    console.log("Ecouteurs chargés")
   }
   catch (error)
   {
