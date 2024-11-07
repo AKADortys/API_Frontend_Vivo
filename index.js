@@ -6,11 +6,13 @@ import { connectFormListeners } from "./JS/connect_user.js";
 import { createUserListeners } from "./JS/create_user.js";
 import { questionListener } from "./JS/question_form.js";
 import { horaireListeners } from "./Partials/ouverture.js";
+import { getArticles } from "./Data/articleGet.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try
   {
     const db = await initDB(); // Initialise la base de données
+    const articles = await getArticles(); // Récupère les articles
     await loadPartials(); // Charge les partials HTML
   
     // Une fois les partials chargés, ajouter les écouteurs
