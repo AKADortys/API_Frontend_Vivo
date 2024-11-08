@@ -32,6 +32,7 @@ export function connectFormListeners() {
             .then(data => {
                 if (data.success) {  // Si la connexion est réussie
                     storeUserData(data.user);  // Stockage dans IndexedDB
+                    document.getElementById("user-info").innerHTML = `Utilisateur : ${data.user.nom} ${data.user.prenom}`;
                 } else {
                     alert("Erreur de connexion : " + data.message);
                 }
