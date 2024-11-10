@@ -1,6 +1,6 @@
 export function initDB() {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open("database", 9);
+    const request = indexedDB.open("database", 10);
 
     request.onupgradeneeded = function(event) {
       const db = event.target.result;
@@ -20,11 +20,14 @@ export function initDB() {
       produit.createIndex("description", "description", { unique: false });
       produit.createIndex("prix", "prix", { unique: false });
 
-
       const panier = db.createObjectStore("panier", { keyPath: "id", autoIncrement: true });
       panier.createIndex("produit_id", "produit_id", { unique: false });
       panier.createIndex("quantite", "quantite", { unique: false });
       panier.createIndex("prix", "prix", { unique: false });
+
+      // Store dédié pour les tokens
+      const tokens = db.createObjectStore("tokens", { keyPath: "type" });
+      tokens.createIndex("accessToken", "accessToken", { unique: true });
 
       console.log("Tables et index créés avec succès.");
     };

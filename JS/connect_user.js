@@ -1,4 +1,5 @@
 import { initDB } from '../Data/indexdb.js';
+import { OrderGetOrCreate } from '../Data/orderGet.js';
 
 export function connectFormListeners() {
     const connect_form = document.getElementById("connect_form");
@@ -37,6 +38,9 @@ export function connectFormListeners() {
                     alert("Erreur de connexion : " + data.message);
                 }
                 this.reset();
+                setTimeout(() => {
+                    OrderGetOrCreate(data.user.id_user)
+                },500)
             })
             .catch(error => console.error(error));
         }
@@ -55,7 +59,8 @@ async function storeUserData(user) {
             mail: user.mail,
             phone: user.phone,
             createdAt: user.createdAt,
-            updatedAt: user.updatedAt
+            updatedAt: user.updatedAt,
+            accessToken : user.accessToken
         });
 
         transaction.oncomplete = () => {

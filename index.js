@@ -7,6 +7,7 @@ import { createUserListeners } from "./JS/create_user.js";
 import { questionListener } from "./JS/question_form.js";
 import { horaireListeners } from "./Partials/ouverture.js";
 import { getArticles } from "./Data/articleGet.js";
+import {displayArticle} from "./Partials/produit-section.js"
 
 document.addEventListener("DOMContentLoaded", async () => {
   try
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     createUserListeners();
     questionListener();
     horaireListeners();
+    displayArticle(articles); // Affiche les articles sur la page
     console.log("Ecouteurs chargés")
   }
   catch (error)
