@@ -7,6 +7,7 @@ export async function loadPartials() {
     connexion,
     contact,
     produit,
+    profile,
     panier,
     footer,
   ] = await Promise.all([
@@ -16,6 +17,7 @@ export async function loadPartials() {
     fetch("Partials/connexion-section.html").then((response) =>response.text()),
     fetch("Partials/contact-section.html").then((response) => response.text()),
     fetch("Partials/produit-section.html").then((response) => response.text()),
+    fetch("Partials/profile-section.html").then((response) => response.text()),
     fetch("Partials/panier-section.html").then((response) => response.text()),
     fetch("Partials/footer.html").then((response) => response.text()),
   ]);
@@ -23,7 +25,7 @@ export async function loadPartials() {
   document.getElementById("newslettre").innerHTML = newsletter;
   document.querySelector("header").innerHTML = header;
   document.querySelector("main").innerHTML =
-    accueil + connexion + contact + produit + panier;
+    accueil + connexion + contact + produit + panier + profile;
   document.querySelector("footer").innerHTML = footer;
 
   console.log("Partials chargées");

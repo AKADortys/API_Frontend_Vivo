@@ -14,13 +14,6 @@ body{
     font-family: cursive;
 }
 
-#user-info{
-    position: absolute;
-    top: 1em;
-    right: 1em;
-    background-color: #06080A;
-    display: none;
-}
 
 
 h3{

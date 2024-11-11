@@ -33,14 +33,15 @@ export function connectFormListeners() {
             .then(data => {
                 if (data.success) {  // Si la connexion est réussie
                     storeUserData(data.user);  // Stockage dans IndexedDB
-                    document.getElementById("user-info").innerHTML = `Utilisateur : ${data.user.nom} ${data.user.prenom}`;
+                    const li = document.createElement('li');
+                    li.setAttribute('data-section','profile')
+                    li.textContent = `Utilisateur : ${data.user.nom} ${data.user.prenom}`;
+                    document.querySelector('li[data-section="connexion"]').style.display = 'none';
+                    document.getElementById("header-list").append(li)
                 } else {
                     alert("Erreur de connexion : " + data.message);
                 }
                 this.reset();
-                setTimeout(() => {
-                    OrderGetOrCreate(data.user.id_user)
-                },500)
             })
             .catch(error => console.error(error));
         }
