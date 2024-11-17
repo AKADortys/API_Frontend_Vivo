@@ -1,77 +1,80 @@
-import { initDB } from '../Data/indexdb.js';
-import { OrderGetOrCreate } from '../Data/orderGet.js';
+import { initDB } from "../Data/indexdb.js";
+import {OrderGetOrCreate} from "../Data/orderGet.js"
 
 export function connectFormListeners() {
-    const connect_form = document.getElementById("connect_form");
+  const connect_form = document.getElementById("connect_form");
 
-    connect_form.addEventListener("submit", function(event) {
-        event.preventDefault();
-        const mail = document.getElementById("mail").value;
-        const password = document.getElementById("mdp").value;
+  connect_form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const mail = document.getElementById("mail").value;
+    const password = document.getElementById("mdp").value;
 
-        let errors = [];
+    let errors = [];
 
-        if (mail === "") errors.push("L'email est obligatoire.");
-        if (password === "") errors.push("Le mot de passe est obligatoire.");
-        if (password.length < 6) errors.push("Le mot de passe doit contenir au moins 6 caractères.");
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(mail)) errors.push("L'adresse e-mail n'est pas valide.");
+    if (mail === "") errors.push("L'email est obligatoire.");
+    if (password === "") errors.push("Le mot de passe est obligatoire.");
+    if (password.length < 6)
+      errors.push("Le mot de passe doit contenir au moins 6 caractères.");
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(mail))
+      errors.push("L'adresse e-mail n'est pas valide.");
 
-        if (errors.length > 0) {
-            alert("Erreurs:\n" + errors.join("\n"));
-            return false;
-        } else {
-            const data = { mail: mail, pwd: password };
+    if (errors.length > 0) {
+      alert("Erreurs:\n" + errors.join("\n"));
+      return false;
+    } else {
+      const data = { mail: mail, pwd: password };
 
-            fetch('http://localhost:3000/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {  // Si la connexion est réussie
-                    storeUserData(data.user);  // Stockage dans IndexedDB
-                    const li = document.createElement('li');
-                    li.setAttribute('data-section','profile')
-                    li.textContent = `Utilisateur : ${data.user.nom} ${data.user.prenom}`;
-                    document.querySelector('li[data-section="connexion"]').style.display = 'none';
-                    document.getElementById("header-list").append(li)
-                } else {
-                    alert("Erreur de connexion : " + data.message);
-                }
-                this.reset();
-            })
-            .catch(error => console.error(error));
-        }
-    });
+      fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            // Si la connexion est réussie
+            document.getElementById("active_user").style.display = "block";
+            document.querySelector('li[data-section="connexion"]').style.display = "none";
+            storeUserData(data.user).then(OrderGetOrCreate(data.user.id_user));
+          } else {
+            alert("Erreur de connexion : " + data.message);
+          }
+          this.reset();
+        })
+        .catch((error) => console.error(error));
+    }
+  });
 }
 async function storeUserData(user) {
-    try {
-        const db = await initDB();
-        const transaction = db.transaction("utilisateurs", "readwrite");
-        const store = transaction.objectStore("utilisateurs");
+  try {
+    const db = await initDB();
+    const transaction = db.transaction("utilisateurs", "readwrite");
+    const store = transaction.objectStore("utilisateurs");
 
-        await store.put({
-            id: user.id_user,
-            nom: user.nom,
-            prenom: user.prenom,
-            mail: user.mail,
-            phone: user.phone,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt,
-            accessToken : user.accessToken
-        });
+    await store.put({
+      id: user.id_user,
+      nom: user.nom,
+      prenom: user.prenom,
+      mail: user.mail,
+      phone: user.phone,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+      accessToken: user.accessToken,
+    });
 
-        transaction.oncomplete = () => {
-            console.log("Utilisateur stocké avec succès dans IndexedDB");
-        };
+    transaction.oncomplete = () => {
+      console.log("Utilisateur stocké avec succès dans IndexedDB");
+    };
 
-        transaction.onerror = (event) => {
-            console.error("Erreur lors du stockage de l'utilisateur", event.target.error);
-        };
-    } catch (error) {
-        console.error("Erreur d'initialisation de la base de données : ", error);
-    }
+    transaction.onerror = (event) => {
+      console.error(
+        "Erreur lors du stockage de l'utilisateur",
+        event.target.error
+      );
+    };
+  } catch (error) {
+    console.error("Erreur d'initialisation de la base de données : ", error);
+  }
 }

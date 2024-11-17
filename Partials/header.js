@@ -1,9 +1,9 @@
 export function headerListeners(){
 
 const logoVivo = document.getElementById('LogoVivo');
+const title = document.getElementById('title');
 const list_header = document.getElementById('header-list');
 const section_main = document.querySelectorAll('.contenue');
-const title = document.getElementById('title');
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const footer = document.querySelector('footer');

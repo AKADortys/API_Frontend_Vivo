@@ -48,3 +48,8 @@ header.navbar-closed{
 #hidde_navbar:hover{
     transform: scale(1.1);
 }
+
+
+#active_user{
+    display: none;
+}

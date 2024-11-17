@@ -1,11 +1,16 @@
 // Fonction pour récupérer le token depuis IndexedDB
 async function getAccessToken() {
-  const db = await initDB(); // Ouvre la connexion IndexedDB (voir fonction `initDB` plus bas)
+  const db = await initDB(); // Ouvre la connexion IndexedDB
   const tx = db.transaction("tokens", "readonly");
   const store = tx.objectStore("tokens");
-    console.log("Token récupéré depuis IndexedDB:", token); // Vérification du token récupéré
-  return await store.get("accessToken");
+  
+  return new Promise((resolve, reject) => {
+    const request = store.get("accessToken");
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject("Erreur lors de la récupération du token.");
+  });
 }
+
 
 // Fonction pour mettre à jour le token dans IndexedDB
 async function setAccessToken(token) {
@@ -18,9 +23,13 @@ async function setAccessToken(token) {
 // Fonction pour l’authFetch avec récupération et mise à jour du token
 async function authFetch(url, options = {}) {
   options.credentials = 'include';
-  
-  const accessToken = await getAccessToken(); // Assure que le token est bien récupéré
-  console.log(accessToken);
+
+  const accessToken = await getAccessToken();
+  if (!accessToken) {
+    console.error("Aucun token d'accès trouvé.");
+    throw new Error("Token d'accès manquant.");
+  }
+
   options.headers = {
     ...options.headers,
     'Content-Type': 'application/json',
@@ -32,9 +41,9 @@ async function authFetch(url, options = {}) {
     if (response.status === 401) {
       const refreshSuccess = await refreshAccessToken();
       if (refreshSuccess) {
-        const newAccessToken = await getAccessToken(); 
-        options.headers.Authorization = `Bearer ${newAccessToken}`; 
-        response = await fetch(url, options); 
+        const newAccessToken = await getAccessToken();
+        options.headers.Authorization = `Bearer ${newAccessToken}`;
+        response = await fetch(url, options);
       } else {
         alert("Votre session a expiré. Veuillez vous reconnecter.");
         return;
