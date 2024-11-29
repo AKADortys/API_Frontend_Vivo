@@ -1,5 +1,5 @@
-import { initDB } from "../Data/indexdb.js";
-import {OrderGetOrCreate} from "../Data/orderGet.js"
+import {OrderGetOrCreate}  from "../Data/orderGet.js";
+import {displayCurrentOrder} from "../Partials/panier-section.js";
 
 export function connectFormListeners() {
   const connect_form = document.getElementById("connect_form");
@@ -37,7 +37,10 @@ export function connectFormListeners() {
             // Si la connexion est réussie
             document.getElementById("active_user").style.display = "block";
             document.querySelector('li[data-section="connexion"]').style.display = "none";
-            storeUserData(data.user).then(OrderGetOrCreate(data.user.id_user));
+            localStorage.setItem("active_user", JSON.stringify(data.user));
+            localStorage.setItem("Token", JSON.stringify(data.user.accessToken));
+            const panier = OrderGetOrCreate(data.user.id_user);
+            displayCurrentOrder(panier);
           } else {
             alert("Erreur de connexion : " + data.message);
           }
@@ -46,35 +49,4 @@ export function connectFormListeners() {
         .catch((error) => console.error(error));
     }
   });
-}
-async function storeUserData(user) {
-  try {
-    const db = await initDB();
-    const transaction = db.transaction("utilisateurs", "readwrite");
-    const store = transaction.objectStore("utilisateurs");
-
-    await store.put({
-      id: user.id_user,
-      nom: user.nom,
-      prenom: user.prenom,
-      mail: user.mail,
-      phone: user.phone,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
-      accessToken: user.accessToken,
-    });
-
-    transaction.oncomplete = () => {
-      console.log("Utilisateur stocké avec succès dans IndexedDB");
-    };
-
-    transaction.onerror = (event) => {
-      console.error(
-        "Erreur lors du stockage de l'utilisateur",
-        event.target.error
-      );
-    };
-  } catch (error) {
-    console.error("Erreur d'initialisation de la base de données : ", error);
-  }
 }

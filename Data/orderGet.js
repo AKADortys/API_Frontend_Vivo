@@ -10,6 +10,7 @@ export async function OrderGetOrCreate(id) {
         }
 
         const order = await response.json(); // Ajoute await pour extraire la réponse JSON
+        localStorage.setItem('order', JSON.stringify(order.order))
         console.log("Commande trouvée !");
         return order;
 

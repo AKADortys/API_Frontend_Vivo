@@ -17,7 +17,5 @@ export function displayArticle(data) {
 
         }
     });
-
-    // Ajout en une seule fois à innerHTML
     section.innerHTML = contentHTML;
 }

@@ -1,77 +1,75 @@
-// Fonction pour récupérer le token depuis IndexedDB
-async function getAccessToken() {
-  const db = await initDB(); // Ouvre la connexion IndexedDB
-  const tx = db.transaction("tokens", "readonly");
-  const store = tx.objectStore("tokens");
+
+// Requête fetch avec authentification
+export async function authFetch(url, options = {}) {
   
-  return new Promise((resolve, reject) => {
-    const request = store.get("accessToken");
-    request.onsuccess = () => resolve(request.result);
-    request.onerror = () => reject("Erreur lors de la récupération du token.");
-  });
-}
-
-
-// Fonction pour mettre à jour le token dans IndexedDB
-async function setAccessToken(token) {
-  const db = await initDB();
-  const tx = db.transaction("tokens", "readwrite");
-  const store = tx.objectStore("tokens");
-  await store.put(token, "accessToken");
-}
-
-// Fonction pour l’authFetch avec récupération et mise à jour du token
-async function authFetch(url, options = {}) {
-  options.credentials = 'include';
-
-  const accessToken = await getAccessToken();
-  if (!accessToken) {
-    console.error("Aucun token d'accès trouvé.");
-    throw new Error("Token d'accès manquant.");
-  }
-
-  options.headers = {
-    ...options.headers,
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${accessToken}`, 
-  };
-
   try {
+    const user = JSON.parse(localStorage.getItem("active_user"));
+    if (!user) {
+      console.error("Utilisateur non trouvé dans localStorage.");
+      throw new Error("Utilisateur non connecté.");
+    }
+
+    let accessToken = user.accessToken;
+
+    if (!accessToken) {
+      console.error("Token d'accès manquant.");
+      throw new Error("Token d'accès introuvable ou expiré.");
+    }
+
+    // Ajout du header Authorization
+    options.headers = {
+      ...options.headers,
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    console.log("URL de la requête :", url);
+    console.log("Options envoyées :", options);
+
+    // Effectuer la requête
     let response = await fetch(url, options);
+    console.log("Statut de la réponse :", response.status);
+
+    // Gestion des erreurs 401
     if (response.status === 401) {
+      console.warn("Token expiré, tentative de rafraîchissement...");
       const refreshSuccess = await refreshAccessToken();
       if (refreshSuccess) {
-        const newAccessToken = await getAccessToken();
-        options.headers.Authorization = `Bearer ${newAccessToken}`;
+        accessToken = await getAccessToken();
+        options.headers.Authorization = `Bearer ${accessToken}`;
         response = await fetch(url, options);
       } else {
-        alert("Votre session a expiré. Veuillez vous reconnecter.");
-        return;
+        console.error("Impossible de rafraîchir le token.");
+        return null;
       }
     }
 
     return response;
   } catch (error) {
     console.error("Erreur dans authFetch :", error);
-    console.log("URL de la requête:", url);
-    console.log("Options de la requête:", options);
     throw error;
   }
 }
 
-// Fonction de rafraîchissement avec mise à jour dans IndexedDB
+// Rafraîchit le token via une API et le stocke dans IndexedDB
 async function refreshAccessToken() {
   try {
-    const response = await fetch('http://localhost:3000/auth/refresh', {
-      method: 'POST',
-      credentials: 'include'
+    const response = await fetch("http://localhost:3000/auth/refresh", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
 
     if (response.ok) {
       const data = await response.json();
-      await setAccessToken(data.accessToken); // Enregistre le nouveau token
+      localStorage.clear();
+      localStorage.setItem("Token", JSON.stringify(data.user));
       return true;
     } else {
+      console.warn("Échec du rafraîchissement du token :", response.statusText);
       return false;
     }
   } catch (error) {
@@ -79,20 +77,3 @@ async function refreshAccessToken() {
     return false;
   }
 }
-
-// Fonction pour ouvrir la connexion IndexedDB
-function initDB() {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open("authDB", 1);
-    request.onerror = (event) => reject("Erreur d'ouverture d'IndexedDB");
-    request.onsuccess = (event) => resolve(event.target.result);
-    request.onupgradeneeded = (event) => {
-      const db = event.target.result;
-      if (!db.objectStoreNames.contains("tokens")) {
-        db.createObjectStore("tokens");
-      }
-    };
-  });
-}
-
-export { authFetch, refreshAccessToken };
