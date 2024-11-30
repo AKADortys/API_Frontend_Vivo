@@ -24,11 +24,9 @@ export async function authFetch(url, options = {}) {
     };
 
     console.log("URL de la requête :", url);
-    console.log("Options envoyées :", options);
 
     // Effectuer la requête
     let response = await fetch(url, options);
-    console.log("Statut de la réponse :", response.status);
 
     // Gestion des erreurs 401
     if (response.status === 401) {
