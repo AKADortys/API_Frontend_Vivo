@@ -1,4 +1,5 @@
-import { authFetch } from '../MiddleWare/FetchAuto.js';
+import { authFetch } from './auth.js';
+import { AppStorage } from "../utils/storage.js";
 
 export async function OrderGetOrCreate(id) {
     try {
@@ -10,7 +11,7 @@ export async function OrderGetOrCreate(id) {
         }
 
         const order = await response.json();
-        localStorage.setItem('order', JSON.stringify(order.order))
+        AppStorage.set('order', JSON.stringify(order.order))
         console.log("Commande trouvée !");
         return order;
 

@@ -1,14 +1,11 @@
 {
-  "name": "dom_interact_vivo",
+  "name": "api_vivo_frontend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "AKADortys",
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^1.7.7"
-  }
+  "description": ""
 }
