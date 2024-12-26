@@ -3,6 +3,7 @@ import { AppStorage } from "../utils/storage.js";
 import { ArticlesOrder } from "./panier.js";
 import { AppDom } from "../utils/dom.js";
 
+//requêtes pour la connection
 export async function login(data){
     try {
         const response = await fetch("http://localhost:3000/auth/login", {
@@ -19,8 +20,8 @@ export async function login(data){
   
         if (result.success) {
           // Stockage des informations utilisateur et token
-          AppStorage.set("active_user", result.user);
-          AppStorage.set("Token", result.user.accessToken);
+          AppStorage.set("active_user", result.user);//stockage
+          AppStorage.set("Token", result.user.accessToken);//stockage
 
           //recup de la commande actuelle
           const order = await OrderGetOrCreate(result.user.id_user);
@@ -36,6 +37,7 @@ export async function login(data){
       }
 }
 
+//requêtes pour la création d'un compte
 export async function register(data){
         fetch('http://localhost:3000/auth/register', {
             method: 'POST',

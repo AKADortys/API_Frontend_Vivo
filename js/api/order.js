@@ -1,6 +1,7 @@
 import { authFetch } from './auth.js';
 import { AppStorage } from "../utils/storage.js";
 
+// Récupère ou crée une commande pour l'utilisateur courant
 export async function OrderGetOrCreate(id) {
     try {
         const options = { method: 'GET' };
@@ -11,7 +12,7 @@ export async function OrderGetOrCreate(id) {
         }
 
         const order = await response.json();
-        AppStorage.set('order', JSON.stringify(order.order))
+        AppStorage.set('order', JSON.stringify(order.order))//stockage
         console.log("Commande trouvée !");
         return order;
 

@@ -1,7 +1,7 @@
 import { ArticlesOrder,addArticleToOrder } from "../api/panier.js";
 import { AppDom } from "../utils/dom.js";
 
-
+//Listener pour le bouton ajouter au panier
 export function articlesListener() {
     const articlesBtn = document.querySelectorAll(".btn");
     articlesBtn.forEach((btn) => {
@@ -17,12 +17,12 @@ export function articlesListener() {
                     return;
                 }
 
-                await addArticleToOrder(id, quantity);
-                await ArticlesOrder();
-                await AppDom.displayCart();
+                await addArticleToOrder(id, quantity); //appel de la fonction pour l'ajout d'un article au panier
+                await ArticlesOrder();// recuperer le détails de la commande mis à jour 
+                await AppDom.displayCart();//afficher la mise à jour du panier
                 articlesListener(); // Réattacher les écouteurs
                 console.log(`Article ${id} ajouté au panier avec ${quantity} exemplaires`);
-                quantityInput.value = 0;
+                quantityInput.value = 0; //réinitialise la valeur de l'input
             } catch (error) {
                 console.error("Erreur lors de l'ajout de l'article au panier :", error);
                 alert("Une erreur est survenue lors de l'ajout au panier.");

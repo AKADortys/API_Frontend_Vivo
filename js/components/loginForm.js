@@ -1,5 +1,6 @@
 import { login } from "../api/user.js";
 
+// Initialisation des listeners sur le formulaire de connexion
 export function loginFormListeners() {
     const connect_form = document.getElementById("connect_form");
   
@@ -25,10 +26,9 @@ export function loginFormListeners() {
       }
   
       const data = { mail: mail, pwd: password };
+      // Appel de la fonction login et réinitialisation du formulaire si succès
       await login(data);
-      
-        // Réinitialisation du formulaire
-        connect_form.reset();
+      connect_form.reset();
     });
   }
   

@@ -4,7 +4,7 @@ import { AppStorage } from "../utils/storage.js";
 export async function authFetch(url, options = {}) {
   
     try {
-      const accessToken = AppStorage.get("Token");
+      const accessToken = AppStorage.get("Token");//récupération du token
       if (!accessToken) {
         console.error("Utilisateur non trouvé dans localStorage.");
         throw new Error("Utilisateur non connecté.");
@@ -27,7 +27,7 @@ export async function authFetch(url, options = {}) {
         console.warn("Token expiré, tentative de rafraîchissement...");
         const refreshSuccess = await refreshAccessToken();
         if (refreshSuccess) {
-          accessToken = AppStorage.get('Token')
+          accessToken = AppStorage.get('Token')//stockage
           options.headers.Authorization = `Bearer ${accessToken}`;
           response = await fetch(url, options);
         } else {
@@ -57,7 +57,7 @@ export async function authFetch(url, options = {}) {
   
       if (response.ok) {
         const data = await response.json();
-        AppStorage.set("Token", JSON.stringify(data.user));
+        AppStorage.set("Token", JSON.stringify(data.user));//stockage
         return true;
       } else {
         console.warn("Échec du rafraîchissement du token :", response.statusText);

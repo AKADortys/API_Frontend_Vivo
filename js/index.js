@@ -1,3 +1,3 @@
 import { AppDom } from "./utils/dom.js";
 
-AppDom.init();
+AppDom.init();//initialisation app

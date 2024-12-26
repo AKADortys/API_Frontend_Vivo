@@ -10,7 +10,9 @@ import { articlesListener } from "../components/cart.js";
 import { getArticles } from "../api/article.js";
 import { AppStorage } from "./storage.js";
 
+//Utilitaire pour la gestion de l'interface utilisateur
 export const AppDom = {
+    //récup des partials
     getPartials: async () =>{
         try {
             // Charger les fichiers partiels HTML
@@ -35,7 +37,7 @@ export const AppDom = {
                 fetch("../../partials/panier-section.html").then((response) => response.text()),
                 fetch("../../partials/footer.html").then((response) => response.text()),
               ]);
-            
+            //injection du contenu dans les éléments html
               document.getElementById("newslettre").innerHTML = newsletter;
               document.querySelector("header").innerHTML = header;
               document.querySelector("main").innerHTML =
@@ -47,18 +49,20 @@ export const AppDom = {
             console.log(error);
         }
     },
-        
+
+    //Ajout des écouteur de l'initialisation de l'app    
     addListeners: () => {
         // Ajouter les écouteurs aux éléments
-        headerListeners();
-        horaireListeners();
-        loginFormListeners();
-        signinListeners();
-        questionFormListener();
-        articlesListener();
+        headerListeners();//navbar
+        horaireListeners();//onglet horaires
+        loginFormListeners();//formulaire de connexion
+        signinListeners();//formulaire d'inscription
+        questionFormListener();//formulaire de question
+        articlesListener();//Boutons ajout au panier
         console.log("Écouteurs ajoutés");
     },
 
+    //Méthode pour initialiser l'app
     init: async ()=>{
         await AppDom.getPartials();
         await getArticles();
@@ -66,8 +70,9 @@ export const AppDom = {
         AppDom.addListeners();
     },
     
+    //Méthode pour afficher les articles dans la section produit
     displayArticles: async ()=>{
-    const articles = await AppStorage.get("articles")
+    const articles = await AppStorage.get("articles")//récup des articles dans LS
     const section = document.getElementById('produit');
 
     let contentHTML = '';
@@ -88,9 +93,10 @@ export const AppDom = {
     });
     section.innerHTML = contentHTML;
     },
-
+    
+    //Méthode pour afficher le détails de la commande courante
     displayCart: async ()=>{
-        const articles = await AppStorage.get("details_order");
+        const articles = await AppStorage.get("details_order");// recup détails commande dans LS
         const panier = document.getElementById('panier');
         let contentHTML = '';
         panier.innerHTML = '';

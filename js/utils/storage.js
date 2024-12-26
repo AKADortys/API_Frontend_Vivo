@@ -1,4 +1,6 @@
 export const AppStorage = {
+
+    //gestion des ajout, lecture et suppression dans LS et SS
     get: (key) => {
         return JSON.parse(localStorage.getItem(key));
     },

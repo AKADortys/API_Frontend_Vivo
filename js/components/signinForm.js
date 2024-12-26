@@ -1,5 +1,6 @@
 import { register } from "../api/user.js";
 
+// Listeners sur le formulaire d'inscription
 export async function signinListeners() {
     const form = document.getElementById("Sign_In-form");
   
@@ -39,7 +40,7 @@ export async function signinListeners() {
           phone:phone,
           mail: mail
         };
-        register(data);
+        register(data); //appel de la fonction register pour l'envoi du formulaire à l'api
         form.reset()
       }
     });

@@ -1,5 +1,6 @@
 export function headerListeners(){
 
+//récupération des éléments html
     const logoVivo = document.getElementById('LogoVivo');
     const title = document.getElementById('title');
     const list_header = document.getElementById('header-list');
@@ -8,8 +9,9 @@ export function headerListeners(){
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
     const hidde_navbar = document.getElementById('hidde_navbar');
-    let navbarIsOpen = false;
+    let navbarIsOpen = false;//variable pour savoir si le header est masqué ou non
     
+    //fonction pour masquer et afficher le header via le bouton
     hidde_navbar.addEventListener('click', function(){
         if(navbarIsOpen){
             header.style.display = 'flex';
@@ -30,7 +32,7 @@ export function headerListeners(){
         }
     })
     
-    
+    //Fonction pour reset la page à son état initial
     function closeSections(){
         section_main.forEach(function(section){
             section.classList.remove('active');
@@ -43,7 +45,7 @@ export function headerListeners(){
         })
     };
     
-    
+    //Fonction pour ouvrir une section
     Array.from(list_header.children).forEach(function(element) {
         element.addEventListener('click', function(){
             closeSections();

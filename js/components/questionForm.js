@@ -1,3 +1,4 @@
+// fonction pour initialiser l'écouteurs du fomulaire de question
 export function questionFormListener() {
     const question_form = document.getElementById("Form_question");
   
@@ -9,7 +10,8 @@ export function questionFormListener() {
       const question = document.getElementById("question").value;
   
       let errors = [];
-  
+
+      //validation des champs
       if (nom === "" || prenom === "" || question === "")
         errors.push("Tout les champs ont besoin d'être remplis");
       if (!prenom || !nom || !question)
