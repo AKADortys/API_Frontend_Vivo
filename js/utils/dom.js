@@ -4,7 +4,7 @@ import { horaireListeners } from "../components/horaire.js";
 import { loginFormListeners } from "../components/loginForm.js";
 import { signinListeners } from "../components/signinForm.js";
 import { questionFormListener } from "../components/questionForm.js"
-import { articlesListener } from "../components/cart.js";
+import { articlesListener, cartListener } from "../components/cart.js";
 
 //import des utilitaires
 import { getArticles } from "../api/article.js";
@@ -58,16 +58,26 @@ export const AppDom = {
         loginFormListeners();//formulaire de connexion
         signinListeners();//formulaire d'inscription
         questionFormListener();//formulaire de question
-        articlesListener();//Boutons ajout au panier
         console.log("Écouteurs ajoutés");
     },
 
     //Méthode pour initialiser l'app
     init: async ()=>{
+        const user = AppStorage.get("active_user")
         await AppDom.getPartials();
-        await getArticles();
-        await AppDom.displayArticles();
-        AppDom.addListeners();
+        if(user){
+            console.log('Utilisateur connecté :', user.nom);
+            await getArticles();
+            await AppDom.displayArticles();
+            await AppDom.displayCart();
+            AppDom.addListeners();
+            
+        } else {
+            console.log('Utilisateur non connecté');
+            await getArticles();
+            await AppDom.displayArticles();
+            AppDom.addListeners();
+        }
     },
     
     //Méthode pour afficher les articles dans la section produit
@@ -92,6 +102,7 @@ export const AppDom = {
         }
     });
     section.innerHTML = contentHTML;
+    articlesListener();
     },
     
     //Méthode pour afficher le détails de la commande courante
@@ -108,11 +119,12 @@ export const AppDom = {
                         <p>Prix : ${e.price} Euro</p>
                         <p>Quantité : ${e.quantity}</p>
                         <p>Total : ${e.quantity * e.price} Euro</p>
-                        <button class="btn" data-article-id="${e.articleId}">Retirer du panier</button>
+                        <button class="btn-del" data-article-id="${e.articleId}">Retirer du panier</button>
                     </div>
                 `;
             });
             panier.innerHTML = contentHTML;
+            cartListener();
         }
     }
           

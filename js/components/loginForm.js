@@ -27,7 +27,11 @@ export function loginFormListeners() {
   
       const data = { mail: mail, pwd: password };
       // Appel de la fonction login et réinitialisation du formulaire si succès
-      await login(data);
+      try {
+        await login(data);
+      } catch (error) {
+        console.error("la connexion a échouer",error)
+      }
       connect_form.reset();
     });
   }

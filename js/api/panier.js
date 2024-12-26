@@ -49,3 +49,19 @@ export async function addArticleToOrder(articleId, quantity) {
     }
 }
 
+// Supprime un article de la commande courante
+export async function removeArticle(articleId){
+    try {
+        const orderId = AppStorage.get('current_order').order.id;
+        const data = { id_article: articleId};
+        const options = { method: 'DELETE', body : JSON.stringify(data) };
+        const response = await authFetch(`http://localhost:3000/order/${orderId}/articlesDel`, options);
+        if (!response.ok) {
+            throw new Error(`Erreur serveur : ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Erreur lors de la suppression de l\'article :', error);
+        return null;
+    }
+}

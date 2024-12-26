@@ -4,11 +4,6 @@ project/
 │   ├── css/             # Fichiers CSS
 │   ├── images/          # Images utilisées dans le projet
 │
-├── components/          # Composants HTML réutilisables
-│   ├── header.html      # Composant d'en-tête
-│   ├── footer.html      # Composant de pied de page
-│   ├── card.html        # Exemple de carte réutilisable
-│
 ├── data/                # Fichiers JSON ou scripts liés aux données locales
 │   └── mock-data.json   # Données fictives pour les tests
 │
@@ -19,9 +14,6 @@ project/
 │   ├── components/      # Scripts spécifiques aux composants
 │   │   ├── header.js    # Gestion dynamique de l'en-tête
 │   │   ├── footer.js    # Gestion dynamique du pied de page
-│   ├── pages/           # Scripts pour chaque page principale
-│   │   ├── home.js      # Script pour la page d'accueil
-│   │   ├── details.js   # Script pour la page de détails
 │   ├── utils/           # Fonctions utilitaires
 │   │   ├── dom.js       # Fonctions pour manipuler le DOM
 │   │   └── storage.js   # Fonctions pour gérer le localStorage/IndexedDB

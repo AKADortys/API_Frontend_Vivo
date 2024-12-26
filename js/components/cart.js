@@ -1,4 +1,4 @@
-import { ArticlesOrder,addArticleToOrder } from "../api/panier.js";
+import { ArticlesOrder,addArticleToOrder, removeArticle } from "../api/panier.js";
 import { AppDom } from "../utils/dom.js";
 
 //Listener pour le bouton ajouter au panier
@@ -29,4 +29,23 @@ export function articlesListener() {
             }
         });
     });
+}
+
+export function cartListener() {
+    const deleteBtns = document.querySelectorAll(".btn-del");
+    deleteBtns.forEach((btn) => {
+        const id = btn.getAttribute("data-article-id");
+        btn.addEventListener("click", async function () {
+            try {
+                await removeArticle(id); //appel de la fonction pour la suppression d'un article du panier
+                await ArticlesOrder(); // récupérer le détails de la commande mis à jour
+                await AppDom.displayCart(); //afficher la mise à jour du panier
+                cartListener(); // Réattacher les écouteurs
+                console.log(`Article ${id} supprimé du panier`);
+            } catch (error) {
+                console.error("Erreur lors de la suppression de l'article du panier :", error);
+                alert("Une erreur est survenue lors de la suppression du panier.");
+            }
+        });
+    })
 }
