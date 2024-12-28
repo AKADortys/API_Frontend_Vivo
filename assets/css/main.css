@@ -157,6 +157,35 @@ main.main-shifted {
     justify-content: space-evenly;
 }
 
+.product {
+    width: 100%;
+    text-align: center;
+    background-color: rgba(240, 248, 255, 0.51);
+}
+
+.product th {
+    border-bottom: solid black 0.1em;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.product td:nth-child(2):hover {
+    transform: scale(1.1);
+}
+
+.product td:nth-child(2) {
+    transition: transform 0.2s ease-in-out;
+}
+
+.product td {
+    padding: 0.3em 0;
+}
+
+.product td:nth-child(1) {
+    background-color: rgb(132, 54, 23);
+    color: gold;
+}
+
 .order-details {
     display: flex;
     flex-direction: column;

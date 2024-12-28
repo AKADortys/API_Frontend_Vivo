@@ -1,5 +1,4 @@
-
-#horaires-ouvertures{
+#horaires-ouvertures {
     color: white;
     background-color: rgba(0, 0, 0, 0.641);
     border: 0.1em solid black;
@@ -11,11 +10,11 @@
     z-index: 100;
 }
 
-#horaires-ouvertures.open{
+#horaires-ouvertures.open {
     transform: translateX(0);
 }
 
-#status>p{
+#status>p {
     text-align: center;
     width: 60%;
     background-color: grey;
@@ -23,13 +22,13 @@
     margin: 0.2em auto;
 }
 
-#accueil_horaire{
+#accueil_horaire {
     width: 100%;
     text-align: center;
 }
 
 
-#accueil_horaire td:nth-child(1){
+#accueil_horaire td:nth-child(1) {
     background-color: rgb(132, 54, 23);
     padding: 0.5em;
     color: gold;
@@ -37,20 +36,20 @@
     transition: transform 0.5s ease;
 }
 
-#accueil_horaire td:nth-child(1):hover{
+#accueil_horaire td:nth-child(1):hover {
     transform: scale(1.1);
 }
 
-#accueil_horaire td:nth-child(2){
+#accueil_horaire td:nth-child(2) {
     background-color: grey;
 }
 
 
-#hidde_horaire{
+#hidde_horaire {
     width: 1.8em;
     height: 1.8em;
     padding: 0.2em;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.54);
     border: 0.1em outset gold;
     cursor: pointer;
     position: absolute;
@@ -60,14 +59,14 @@
     transition: transform 0.5s ease;
 }
 
-#hidde_horaire:hover{
+#hidde_horaire:hover {
     transform: scale(1.1);
 }
 
-.open{
+.open {
     color: greenyellow;
 }
 
-.closed{
+.closed {
     color: red;
 }

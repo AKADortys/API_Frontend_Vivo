@@ -1,12 +1,11 @@
-
-header{
+header {
     color: white;
     display: flex;
     transform: translateY(0%);
     transition: transform 0.15s linear;
 }
 
-header.navbar-closed{
+header.navbar-closed {
     transform: translateY(-200%);
 }
 
@@ -17,7 +16,7 @@ header.navbar-closed{
     display: flex;
 }
 
-#header-list li{
+#header-list li {
     padding: 0.4em 2em;
     font-weight: bold;
     transition: background-color 0.6s ease, border 0.1s ease;
@@ -26,16 +25,16 @@ header.navbar-closed{
 
 
 
-#header-list li:hover{
+#header-list li:hover {
     cursor: pointer;
     background-color: rgba(100, 100, 99, 0.675);
 }
 
-#hidde_navbar{
+#hidde_navbar {
     width: 1.8em;
     height: 1.8em;
     padding: 0.2em;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.54);
     border: 0.1em outset gold;
     cursor: pointer;
     position: absolute;
@@ -45,11 +44,11 @@ header.navbar-closed{
     transition: transform 0.5s ease;
 }
 
-#hidde_navbar:hover{
+#hidde_navbar:hover {
     transform: scale(1.1);
 }
 
 
-#active_user{
+#active_user {
     display: none;
 }

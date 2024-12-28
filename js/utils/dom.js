@@ -84,6 +84,7 @@ export const AppDom = {
     if (user) {
       console.log("Utilisateur connecté :", user.nom);
       await AppDom.displayCart();
+      document.getElementById("hidde_profile").style.display = "block";
     }
     AppDom.addListeners();
   },
@@ -93,21 +94,23 @@ export const AppDom = {
     const articles = await AppStorage.get("articles"); //récup des articles dans LS
     const section = document.getElementById("produit");
 
-    let contentHTML = "";
+    let contentHTML = `<table class="product">
+    <th>Nom</th> <th>Description</th> <th>Prix</th> <th>Ajout</th>`;
 
     articles.forEach((e) => {
       if (e.available) {
         contentHTML += `
-                <div class="article-card">
-                    <h3>${e.label}</h3>
-                    <p>${e.content}</p>
-                    <p>Prix : ${e.price} Euro</p>
-                    <input type="number" min="0" max="15" value="0" id="article${e.id}">
-                    <button class="btn" data-article-id="${e.id}">Ajouter au panier</button>
-                </div>
+                <tr>
+                    <td>${e.label}</td>
+                    <td>${e.content}</td>
+                    <td>${e.price} Euro</td>
+                    <td><input type="number" min="0" max="15" value="0" id="article${e.id}">
+                    <button class="btn" data-article-id="${e.id}">Ajouter au panier</button></td>
+                </tr>
             `;
       }
     });
+    contentHTML += "</table>";
     section.innerHTML = contentHTML;
     articlesListener();
   },
