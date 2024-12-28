@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Love+Light&display=swap');
 
-body{
+body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -16,13 +16,33 @@ body{
 
 
 
-h3{
+h3 {
     width: 100%;
     text-align: center;
 }
 
 
-#LogoVivo{
+#hidde_profile {
+    width: 1.8em;
+    height: 1.8em;
+    padding: 0.2em;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 0.1em outset gold;
+    cursor: pointer;
+    position: absolute;
+    left: 0.1em;
+    top: 5.3em;
+    z-index: 6;
+    transition: transform 0.5s ease;
+    display: none;
+
+}
+
+#hidde_profile:hover {
+    transform: scale(1.1);
+}
+
+#LogoVivo {
     width: 15vw;
     height: 30vh;
     position: absolute;
@@ -31,7 +51,7 @@ h3{
 }
 
 
-#title{
+#title {
     position: absolute;
     top: 45%;
     margin: 0;
@@ -52,14 +72,15 @@ button {
     border: 2px inset #FFF333;
     background: #000000;
     background: linear-gradient(to top, #000000, #6B686A);
-  }
-  button:hover {
+}
+
+button:hover {
     color: #EDB313 !important;
     background: #6B686A;
     background: linear-gradient(to top, #6B686A, #000000);
-  }
-  
-  input[type="submit"] {
+}
+
+input[type="submit"] {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -76,7 +97,10 @@ input[type="reset"] {
 }
 
 
-input[type="text"], input[type="password"], input[type="mail"], textarea{
+input[type="text"],
+input[type="password"],
+input[type="mail"],
+textarea {
     font-size: 1.3em;
     font-style: italic;
     width: 90%;

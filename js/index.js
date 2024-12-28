@@ -1,3 +1,5 @@
 import { AppDom } from "./utils/dom.js";
+import { AppStorage } from "./utils/storage.js";
 
-AppDom.init();//initialisation app
+AppStorage.clear(); //vide le localStorage
+AppDom.init(); //initialisation app
