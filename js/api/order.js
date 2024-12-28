@@ -12,7 +12,7 @@ export async function OrderGetOrCreate(id) {
         }
 
         const order = await response.json();
-        AppStorage.set('order', JSON.stringify(order.order))//stockage
+        AppStorage.set('current_order',order)//stockage
         console.log("Commande trouvée !");
         return order;
 

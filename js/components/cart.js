@@ -1,8 +1,10 @@
 import { ArticlesOrder,addArticleToOrder, removeArticle } from "../api/panier.js";
+import {OrderGetOrCreate} from "../api/order.js"
 import { AppDom } from "../utils/dom.js";
+import { AppStorage } from "../utils/storage.js";
 
 //Listener pour le bouton ajouter au panier
-export function articlesListener() {
+export async function articlesListener() {
     const articlesBtn = document.querySelectorAll(".btn");
     articlesBtn.forEach((btn) => {
         const id = btn.getAttribute("data-article-id");
@@ -19,8 +21,8 @@ export function articlesListener() {
 
                 await addArticleToOrder(id, quantity); //appel de la fonction pour l'ajout d'un article au panier
                 await ArticlesOrder();// recuperer le détails de la commande mis à jour 
+                await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
                 await AppDom.displayCart();//afficher la mise à jour du panier
-                articlesListener(); // Réattacher les écouteurs
                 console.log(`Article ${id} ajouté au panier avec ${quantity} exemplaires`);
                 quantityInput.value = 0; //réinitialise la valeur de l'input
             } catch (error) {
@@ -31,7 +33,7 @@ export function articlesListener() {
     });
 }
 
-export function cartListener() {
+export async function cartListener() {
     const deleteBtns = document.querySelectorAll(".btn-del");
     deleteBtns.forEach((btn) => {
         const id = btn.getAttribute("data-article-id");
@@ -39,6 +41,7 @@ export function cartListener() {
             try {
                 await removeArticle(id); //appel de la fonction pour la suppression d'un article du panier
                 await ArticlesOrder(); // récupérer le détails de la commande mis à jour
+                await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
                 await AppDom.displayCart(); //afficher la mise à jour du panier
                 cartListener(); // Réattacher les écouteurs
                 console.log(`Article ${id} supprimé du panier`);

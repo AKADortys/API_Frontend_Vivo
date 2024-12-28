@@ -1,16 +1,17 @@
 import { authFetch } from './auth.js';
 import { AppStorage } from "../utils/storage.js";
 
+
 // Récupère la liste des articles d'une commande
 export async function ArticlesOrder() {
     try {
-        const commande = AppStorage.get('current_order');// récupère la commande courante
+        const commande = AppStorage.get('current_order').order;// récupère la commande courante
         if (!commande) {
             console.error("Commande non trouvée dans localStorage.");
             throw new Error("Commande non trouvée.");
         }
         const options = { method: 'GET' };
-        const response = await authFetch(`http://localhost:3000/ArticleOrder/article/${commande.order.id}`, options);
+        const response = await authFetch(`http://localhost:3000/ArticleOrder/article/${commande.id}`, options);
 
         if (!response.ok) {
             throw new Error(`Erreur serveur : ${response.status} ${response.statusText}`);
@@ -29,14 +30,14 @@ export async function ArticlesOrder() {
 // Ajoute un article à la commande courante
 export async function addArticleToOrder(articleId, quantity) {
     try {
-        const commande = AppStorage.get('current_order');// recuperation de la commande courante
+        const commande = AppStorage.get('current_order').order;// récupère la commande courante
         if(quantity <= 0){
             console.error("Erreur : articleId ou quantité invalide.");
             throw new Error("Erreur : articleId ou quantité invalide.");
         }
         const data = { id_article: articleId, quantity: quantity}
         const options = { method: 'POST', body : JSON.stringify(data) };
-        const response = await authFetch(`http://localhost:3000/order/${commande.order.id}/articlesAdd`, options);
+        const response = await authFetch(`http://localhost:3000/order/${commande.id}/articlesAdd`, options);
 
         if (!response.ok) {
             throw new Error(`Erreur serveur : ${response.status} ${response.statusText}`);

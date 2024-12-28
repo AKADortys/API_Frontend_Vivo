@@ -61,3 +61,10 @@ export async function register(data){
             alert("Une erreur est survenue : " + error.message);
           });
 }
+
+export async function logout() {
+  AppStorage.clear();
+  console.log("Déconnexion réussie!");
+  alert("Vous êtes déconnecté!");
+  AppDom.init();
+}

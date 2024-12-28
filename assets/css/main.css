@@ -9,20 +9,21 @@ main {
     align-content: space-between;
     /* background-color: rgba(100, 100, 99, 0.675); */
     transition: height 0.5s ease-in;
-    overflow-y: auto; 
-    overflow-x: hidden; 
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-main.main-shifted{
+main.main-shifted {
     height: 100vh;
 }
+
 .contenue {
     display: none;
     margin: 0;
     flex-wrap: wrap;
     width: 100%;
-    min-height: 100%; 
-    max-height: 100%; 
+    min-height: 100%;
+    max-height: 100%;
     opacity: 0;
     transition: opacity 1s ease;
     overflow-y: auto;
@@ -35,13 +36,13 @@ main.main-shifted{
     opacity: 1;
 }
 
-.contenue>h2{
+.contenue>h2 {
     width: 90%;
     text-align: center;
     font-size: 2em;
 }
 
-.content-child{
+.content-child {
     margin: 0;
     padding: 0.5em;
     border: 0.1em solid black;
@@ -50,12 +51,12 @@ main.main-shifted{
     transition: background-color 0.5s ease, transform 0.3s ease;
 }
 
-.content-child:hover{
+.content-child:hover {
     background-color: rgba(255, 255, 255, 0.7);
     transform: scale(1.1);
 }
 
-#accueil>img{
+#accueil>img {
     width: 15%;
     max-width: 500px;
     height: auto;
@@ -66,22 +67,22 @@ main.main-shifted{
     transition: transform 0.5s ease-in-out;
 }
 
-#accueil>img:hover{
+#accueil>img:hover {
     transform: scale(1.1);
 }
 
 
-#accueil_present{
+#accueil_present {
     width: 60%;
     text-align: center;
 }
 
 
-#contact_coord{
+#contact_coord {
     text-align: center;
 }
 
-#contact_coord>ul{
+#contact_coord>ul {
     list-style: none;
     padding: 0.2em;
     margin: 0;
@@ -90,30 +91,30 @@ main.main-shifted{
     border: 0.2em outset goldenrod;
 }
 
-#contact_coord>ul>li{
+#contact_coord>ul>li {
     padding: 0.1em;
 }
 
-#contact_coord a{
+#contact_coord a {
     color: gold;
     text-decoration: none;
     transition: color 0.5s ease-in-out;
 }
 
-#contact_coord a:hover{
+#contact_coord a:hover {
     color: blue;
 }
 
-#contact_coord>ul>li>img{
+#contact_coord>ul>li>img {
     width: 2em;
     height: auto;
 }
 
-#Form_question{
+#Form_question {
     width: 30%;
 }
 
-#Form_question>table{
+#Form_question>table {
     width: 100%;
     text-align: center;
     padding: 0.2em;
@@ -124,32 +125,45 @@ main.main-shifted{
     border: 0.2em outset goldenrod;
 }
 
-#Form_question>table td{
+#Form_question>table td {
     padding: 0.5em 0;
 }
 
 
-#accueil_offre{
+#accueil_offre {
     width: 20%;
     text-align: center;
 }
 
 
-#accueil_offre>ul{
+#accueil_offre>ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#contact_form_question{
+#contact_form_question {
     width: 30%;
 }
 
-.article-card{
+.article-card {
     width: 25%;
     height: 25%;
     background-color: rgba(240, 248, 255, 0.486);
-    margin: 1.5em 2em;
-    padding: 0 0.2em;
     text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.order-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    border: 0.1em solid black;
+    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
 }

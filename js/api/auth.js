@@ -17,8 +17,6 @@ export async function authFetch(url, options = {}) {
         Authorization: `Bearer ${accessToken}`,
       };
   
-      console.log("URL de la requête :", url);
-  
       // Effectuer la requête
       let response = await fetch(url, options);
   
@@ -32,7 +30,7 @@ export async function authFetch(url, options = {}) {
           response = await fetch(url, options);
         } else {
           console.error("Impossible de rafraîchir le token.");
-          return null;
+          alert("Veuillez vous reconnecter pour effectuer cette action")
         }
       }
   
@@ -46,9 +44,9 @@ export async function authFetch(url, options = {}) {
   // Rafraîchit le token via une API et le stocke dans IndexedDB
   async function refreshAccessToken() {
     try {
+      const accessToken = AppStorage.get("Token");//récupération du token
       const response = await fetch("http://localhost:3000/auth/refresh", {
         method: "POST",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,

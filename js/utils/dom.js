@@ -65,19 +65,13 @@ export const AppDom = {
     init: async ()=>{
         const user = AppStorage.get("active_user")
         await AppDom.getPartials();
+        await getArticles();
+        await AppDom.displayArticles();
         if(user){
             console.log('Utilisateur connecté :', user.nom);
-            await getArticles();
-            await AppDom.displayArticles();
-            await AppDom.displayCart();
-            AppDom.addListeners();
-            
-        } else {
-            console.log('Utilisateur non connecté');
-            await getArticles();
-            await AppDom.displayArticles();
-            AppDom.addListeners();
+            await AppDom.displayCart();   
         }
+        AppDom.addListeners();
     },
     
     //Méthode pour afficher les articles dans la section produit
@@ -108,14 +102,19 @@ export const AppDom = {
     //Méthode pour afficher le détails de la commande courante
     displayCart: async ()=>{
         const articles = await AppStorage.get("details_order");// recup détails commande dans LS
+        const order = await AppStorage.get("current_order").order;
+        console.log(order)
         const panier = document.getElementById('panier');
         let contentHTML = '';
         panier.innerHTML = '';
         if(articles.articleOrders !==null) {
+            contentHTML += `
+                <div class="order-details">
+            `;
             articles.articleOrders.forEach(e => {
                 contentHTML += `
                     <div class="article-card">
-                        <h3>${e.label}</h3>
+                        <p>${e.label}</p>
                         <p>Prix : ${e.price} Euro</p>
                         <p>Quantité : ${e.quantity}</p>
                         <p>Total : ${e.quantity * e.price} Euro</p>
@@ -123,6 +122,14 @@ export const AppDom = {
                     </div>
                 `;
             });
+            contentHTML += '</div> <div class="order">';
+            if(order !== null){
+                contentHTML += `
+                    <p>Total commande : ${order.totalPrice} Euro</p>
+                    <p>Nombres d'articles : ${order.totalQuantity}</p>
+                    <button class="btn" id="btn-order">Valider la commande</button>
+                `;
+            }
             panier.innerHTML = contentHTML;
             cartListener();
         }
