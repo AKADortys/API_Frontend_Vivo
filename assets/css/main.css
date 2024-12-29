@@ -1,6 +1,6 @@
 main {
     padding: 0.1em;
-    width: 92vw;
+    width: 95vw;
     height: 85vh;
     margin: 1em auto;
     display: flex;
@@ -146,27 +146,20 @@ main.main-shifted {
     width: 30%;
 }
 
-.article-card {
-    width: 25%;
-    height: 25%;
-    background-color: rgba(240, 248, 255, 0.486);
-    text-align: center;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
 
 .product {
     width: 100%;
     text-align: center;
-    background-color: rgba(240, 248, 255, 0.51);
+    background-color: grey;
+    border-collapse: collapse;
+    border: 0.2em solid goldenrod;
 }
 
 .product th {
     border-bottom: solid black 0.1em;
     background-color: black;
     color: whitesmoke;
+    border-bottom: 0.1em white solid;
 }
 
 .product td:nth-child(2):hover {
@@ -177,22 +170,76 @@ main.main-shifted {
     transition: transform 0.2s ease-in-out;
 }
 
-.product td {
-    padding: 0.3em 0;
-}
 
 .product td:nth-child(1) {
     background-color: rgb(132, 54, 23);
     color: gold;
+    border-right: black solid 0.1em;
 }
 
+.product td {
+    padding: 0.3em 0;
+}
+
+.product td:nth-child(3) {
+    color: green;
+    font-weight: bold;
+}
+
+
 .order-details {
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
     margin: 0;
-    padding: 0;
+    padding: 0.5em;
     border: 0.1em solid black;
     box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
+    background-color: rgba(100, 100, 99, 0.675);
+    transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+.order-details:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+}
+
+.order {
+    width: 40%;
+    background-color: rgba(240, 248, 255, 0.51);
+    border: inset 0.2em goldenrod;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.2em;
+    transition: transform 0.2s ease-in-out;
+}
+
+.order:hover {
+    transform: scale(1.1);
+}
+
+.order p {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0.2em 0;
+    margin: 0.5em 0;
+}
+
+.order p>span {
+    color: green;
+    font-weight: bold;
+}
+
+.quantity {
+    font-size: 1.3em;
+    font-style: italic;
+    width: 1.5em;
+    height: 1.5em;
+    background: #FFFFFF;
+    color: #000000;
+    border: 0.1em inset #f8e922;
+    text-align: center;
 }

@@ -95,7 +95,7 @@ export const AppDom = {
     const section = document.getElementById("produit");
 
     let contentHTML = `<table class="product">
-    <th>Nom</th> <th>Description</th> <th>Prix</th> <th>Ajout</th>`;
+    <th>Nom</th> <th>Description</th> <th>Prix</th> <th>Action</th>`;
 
     articles.forEach((e) => {
       if (e.available) {
@@ -104,7 +104,7 @@ export const AppDom = {
                     <td>${e.label}</td>
                     <td>${e.content}</td>
                     <td>${e.price} Euro</td>
-                    <td><input type="number" min="0" max="15" value="0" id="article${e.id}">
+                    <td><input type="number" min="0" max="15" value="0" class="quantity" id="article${e.id}">
                     <button class="btn" data-article-id="${e.id}">Ajouter au panier</button></td>
                 </tr>
             `;
@@ -125,23 +125,26 @@ export const AppDom = {
     if (articles.articleOrders !== null) {
       contentHTML += `
                 <div class="order-details">
+                <h3>Panier</h3>
+                <table class="product">
+                <th>Nom</th> <th>Compte</th> <th>Total</th> <th>Action</th>
             `;
       articles.articleOrders.forEach((e) => {
         contentHTML += `
-                    <div class="article-card">
-                        <p>${e.label}</p>
-                        <p>Prix : ${e.price} Euro</p>
-                        <p>Quantité : ${e.quantity}</p>
-                        <p>Total : ${e.quantity * e.price} Euro</p>
-                        <button class="btn-del" data-article-id="${e.articleId}">Retirer du panier</button>
-                    </div>
+                    <tr>
+                        <td>${e.label}</td>
+                        <td>${e.price} Euro X ${e.quantity}</td>
+                        <td>${e.quantity * e.price} Euro</td>
+                        <td><button class="btn-del" data-article-id="${e.articleId}">Retirer du panier</button></td>
+                    </tr>
                 `;
       });
-      contentHTML += '</div> <div class="order">';
+      contentHTML += '</table></div> <div class="order">';
       if (order !== null) {
         contentHTML += `
-                    <p>Total commande : ${order.totalPrice} Euro</p>
-                    <p>Nombres d'articles : ${order.totalQuantity}</p>
+                    <p>Total commande : <span>${order.totalPrice}</span> Euro</p>
+                    <p><span>${order.totalQuantity}</span> article(s) dans votre panier</p>
+                    <p>disponible : <span>${order.available ? "Disponible en magasin" : "Indisponible ou en cour de traitement"}</span></p>
                     <button class="btn" id="btn-order">Valider la commande</button>
                 `;
       }
@@ -155,8 +158,9 @@ export const AppDom = {
     const user = await AppStorage.get("active_user");
     const profile = document.getElementById("profile");
     profile.innerHTML = `
-        <h2>Bonjour ${user.nom}</h2>
-        <p>Email : ${user.email}</p>
+        <h2>Bonjour, ${user.prenom}</h2>
+        <p>Email : ${user.mail}</p>
+        <p>Téléphone : ${user.phone}</p>
         <button class="btn" id="btn-logout">Se déconnecter</button>
     `;
     profile.addEventListener("click", (e) => {
