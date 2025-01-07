@@ -158,7 +158,7 @@ export const AppDom = {
     const user = await AppStorage.get("active_user");
     const profile = document.getElementById("profile");
     profile.innerHTML = `
-        <h2>Bonjour, ${user.prenom}</h2>
+        <h2>Bonjour, ${user.prenom} ${user.nom}</h2>
         <p>Email : ${user.mail}</p>
         <p>Téléphone : ${user.phone}</p>
         <button class="btn" id="btn-logout">Se déconnecter</button>
@@ -168,6 +168,7 @@ export const AppDom = {
         AppStorage.clear();
         console.log("Déconnexion réussie!");
         alert("Vous êtes déconnecté!");
+        document.getElementById("hidde_profile").style.display = "none";
         AppDom.init();
       }
     });
