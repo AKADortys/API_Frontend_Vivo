@@ -29,7 +29,7 @@ export async function authFetch(url, options = {}) {
         response = await fetch(url, options);
       } else {
         console.error("Impossible de rafraîchir le token.");
-        alert("Veuillez vous reconnecter pour effectuer cette action");
+        Swal.fire("Veuillez vous reconnecter pour effectuer cette action");
       }
     }
 

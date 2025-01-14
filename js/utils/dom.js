@@ -167,7 +167,7 @@ export const AppDom = {
       if (e.target.id === "btn-logout") {
         AppStorage.clear();
         console.log("Déconnexion réussie!");
-        alert("Vous êtes déconnecté!");
+        Swal.fire("Vous êtes déconnecté!");
         document.getElementById("hidde_profile").style.display = "none";
         AppDom.init();
       }

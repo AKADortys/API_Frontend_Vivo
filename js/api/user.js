@@ -34,7 +34,9 @@ export async function login(data) {
     }
   } catch (error) {
     console.error("Une erreur est survenue :", error);
-    alert("Une erreur est survenue lors de la connexion. Veuillez réessayer.");
+    Swal.fire(
+      "Une erreur est survenue lors de la connexion. Veuillez réessayer."
+    );
   }
 }
 
@@ -55,10 +57,10 @@ export async function register(data) {
     })
     .then((data) => {
       console.log("Réussie:", data);
-      alert("Votre inscription est validée!");
+      Swal.fire("Votre inscription est validée!");
     })
     .catch((error) => {
       console.error("Error:", error);
-      alert("Une erreur est survenue : " + error.message);
+      Swal.fire("Une erreur est survenue : " + error.message);
     });
 }

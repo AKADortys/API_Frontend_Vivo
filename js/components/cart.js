@@ -16,7 +16,7 @@ export async function articlesListener() {
       try {
         const user = AppStorage.get("active_user");
         if (!user)
-          return alert(
+          return Swal.fire(
             "Vous n'êtes pas connecté(e), vous pouvez créer un compte via l'onglet Connection "
           );
         const quantityInput = document.getElementById(`article${id}`);
@@ -24,7 +24,7 @@ export async function articlesListener() {
 
         if (isNaN(quantity) || quantity <= 0 || quantity > 15) {
           console.error("Quantité invalide ou hors limite !");
-          alert("Veuillez entrer une quantité valide (entre 1 et 15).");
+          Swal.fire("Veuillez entrer une quantité valide (entre 1 et 15).");
           return;
         }
 
@@ -32,11 +32,11 @@ export async function articlesListener() {
         await ArticlesOrder(); // recuperer le détails de la commande mis à jour
         await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
         await AppDom.displayCart(); //afficher la mise à jour du panier
-        alert(`Article ajouté au panier avec ${quantity} exemplaires`);
+        Swal.fire(`Article ajouté au panier avec ${quantity} exemplaires`);
         quantityInput.value = 0; //réinitialise la valeur de l'input
       } catch (error) {
         console.error("Erreur lors de l'ajout de l'article au panier :", error);
-        alert("Une erreur est survenue lors de l'ajout au panier.");
+        Swal.fire("Une erreur est survenue lors de l'ajout au panier.");
       }
     });
   });
@@ -53,13 +53,13 @@ export async function cartListener() {
         await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
         await AppDom.displayCart(); //afficher la mise à jour du panier
         cartListener(); // Réattacher les écouteurs
-        alert("Article supprimé du panier");
+        Swal.fire("Article supprimé du panier");
       } catch (error) {
         console.error(
           "Erreur lors de la suppression de l'article du panier :",
           error
         );
-        alert("Une erreur est survenue lors de la suppression du panier.");
+        Swal.fire("Une erreur est survenue lors de la suppression du panier.");
       }
     });
   });
