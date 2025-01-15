@@ -16,27 +16,40 @@ export async function articlesListener() {
       try {
         const user = AppStorage.get("active_user");
         if (!user)
-          return Swal.fire(
-            "Vous n'êtes pas connecté(e), vous pouvez créer un compte via l'onglet Connection "
+          return AppDom.CreateAlert(
+            "Vous n'êtes pas connecté(e) ! ",
+            "vous pouvez créer un compte via l'onglet Connection",
+            "warning"
           );
         const quantityInput = document.getElementById(`article${id}`);
         const quantity = parseInt(quantityInput.value);
 
         if (isNaN(quantity) || quantity <= 0 || quantity > 15) {
           console.error("Quantité invalide ou hors limite !");
-          Swal.fire("Veuillez entrer une quantité valide (entre 1 et 15).");
-          return;
+          return AppDom.CreateAlert(
+            "Quantité invalide ou hors limite !",
+            "Veuillez entrer une quantité valide (entre 1 et 15).",
+            "warning"
+          );
         }
 
         await addArticleToOrder(id, quantity); //appel de la fonction pour l'ajout d'un article au panier
         await ArticlesOrder(); // recuperer le détails de la commande mis à jour
         await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
         await AppDom.displayCart(); //afficher la mise à jour du panier
-        Swal.fire(`Article ajouté au panier avec ${quantity} exemplaires`);
         quantityInput.value = 0; //réinitialise la valeur de l'input
+        return AppDom.CreateAlert(
+          "Article ajouté au panier",
+          "vous pouvez consulter votre panier via l'onglet Panier",
+          "success"
+        );
       } catch (error) {
         console.error("Erreur lors de l'ajout de l'article au panier :", error);
-        Swal.fire("Une erreur est survenue lors de l'ajout au panier.");
+        AppDom.CreateAlert(
+          "Une erreur est survenue",
+          "Une erreur est survenue lors de l'ajout au panier.",
+          "error"
+        );
       }
     });
   });
@@ -53,13 +66,17 @@ export async function cartListener() {
         await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
         await AppDom.displayCart(); //afficher la mise à jour du panier
         cartListener(); // Réattacher les écouteurs
-        Swal.fire("Article supprimé du panier");
+        AppDom.CreateAlert("Article supprimé du panier", "", "success");
       } catch (error) {
         console.error(
           "Erreur lors de la suppression de l'article du panier :",
           error
         );
-        Swal.fire("Une erreur est survenue lors de la suppression du panier.");
+        AppDom.CreateAlert(
+          "Une erreur est survenue",
+          "Une erreur est survenue lors de la suppression du panier.",
+          "error"
+        );
       }
     });
   });

@@ -173,4 +173,12 @@ export const AppDom = {
       }
     });
   },
+  CreateAlert: (title, text, icon) => {
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      draggable: true,
+    });
+  },
 };

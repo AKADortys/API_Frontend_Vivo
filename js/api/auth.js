@@ -1,5 +1,5 @@
 import { AppStorage } from "../utils/storage.js";
-
+import { AppDom } from "../utils/dom.js";
 // Requête fetch avec authentification
 export async function authFetch(url, options = {}) {
   try {
@@ -29,7 +29,11 @@ export async function authFetch(url, options = {}) {
         response = await fetch(url, options);
       } else {
         console.error("Impossible de rafraîchir le token.");
-        Swal.fire("Veuillez vous reconnecter pour effectuer cette action");
+        AppDom.CreateAlert(
+          "Re-connection requise",
+          "Veuillez vous reconnecter pour effectuer cette action",
+          "info"
+        );
       }
     }
 

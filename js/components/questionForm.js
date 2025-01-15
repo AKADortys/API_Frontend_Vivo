@@ -1,3 +1,5 @@
+import { AppDom } from "../utils/dom.js";
+
 // fonction pour initialiser l'écouteurs du fomulaire de question
 export function questionFormListener() {
   const question_form = document.getElementById("Form_question");
@@ -15,13 +17,17 @@ export function questionFormListener() {
     if (nom === "" || prenom === "" || question === "")
       errors.push("Tout les champs ont besoin d'être remplis");
     if (!prenom || !nom || !question)
-      errors.push("Tout les champs ont besoin d'être remplis");
+      errors.push("Tout les champs doivent être fournis");
 
     if (errors.length > 0) {
-      Swal.fire("Erreurs:\n" + errors.join("\n"));
+      AppDom.CreateAlert(
+        "Une erreur est survenue",
+        "Erreurs:\n" + errors.join("\n"),
+        "warning"
+      );
       return false;
     } else {
-      Swal.fire(`Merci ${prenom} ${nom} pour votre question : ${question}`);
+      AppDom.CreateAlert("Une erreur est survenue", "", "error");
       question_form.reset();
       //Ajouter le code plus tard
     }

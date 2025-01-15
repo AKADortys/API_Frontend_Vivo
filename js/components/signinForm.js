@@ -1,4 +1,5 @@
 import { register } from "../api/user.js";
+import { AppDom } from "../utils/dom.js";
 
 // Listeners sur le formulaire d'inscription
 export async function signinListeners() {
@@ -30,7 +31,11 @@ export async function signinListeners() {
 
     // Affichage des erreurs ou envoi
     if (errors.length > 0) {
-      Swal.fire("Erreurs:\n" + errors.join("\n"));
+      AppDom.CreateAlert(
+        "Une erreur est survenue",
+        "Erreurs:\n" + errors.join("\n"),
+        "warning"
+      );
       return false;
     } else {
       const data = {

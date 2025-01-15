@@ -1,4 +1,5 @@
 import { login } from "../api/user.js";
+import { AppDom } from "../utils/dom.js";
 
 // Initialisation des listeners sur le formulaire de connexion
 export function loginFormListeners() {
@@ -21,7 +22,11 @@ export function loginFormListeners() {
       errors.push("L'adresse e-mail n'est pas valide.");
 
     if (errors.length > 0) {
-      Swal.fire("Erreurs:\n" + errors.join("\n"));
+      AppDom.CreateAlert(
+        "Une Erreur est survenue",
+        "Erreurs:\n" + errors.join("\n"),
+        "warning"
+      );
       return false;
     }
 
@@ -30,6 +35,7 @@ export function loginFormListeners() {
     try {
       await login(data);
     } catch (error) {
+      AppDom.CreateAlert("Erreur", "La Connection a échouer", "error");
       console.error("la connexion a échouer", error);
     }
     connect_form.reset();

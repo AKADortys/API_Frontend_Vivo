@@ -12,13 +12,19 @@ export async function login(data) {
       body: JSON.stringify(data),
     });
 
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP : ${response.status}`);
+    if (!response.status === 401) {
+      AppDom.CreateAlert(
+        "La tentative de connection a échouée",
+        response.message,
+        "error"
+      );
+      return false;
     }
 
     const result = await response.json();
 
     if (result.success) {
+      AppDom.CreateAlert("Connection réussie", "", "success");
       // Stockage des informations utilisateur et token
       AppStorage.set("active_user", result.user); //stockage
       AppStorage.set("Token", result.user.accessToken); //stockage
@@ -34,8 +40,10 @@ export async function login(data) {
     }
   } catch (error) {
     console.error("Une erreur est survenue :", error);
-    Swal.fire(
-      "Une erreur est survenue lors de la connexion. Veuillez réessayer."
+    AppDom.CreateAlert(
+      "Une erreur est suvrnue",
+      "Une erreur est survenue lors de la connexion. Veuillez réessayer.",
+      "error"
     );
   }
 }
@@ -57,10 +65,14 @@ export async function register(data) {
     })
     .then((data) => {
       console.log("Réussie:", data);
-      Swal.fire("Votre inscription est validée!");
+      AppDom.CreateAlert("Votre inscription est validée!", "", "success");
     })
     .catch((error) => {
       console.error("Error:", error);
-      Swal.fire("Une erreur est survenue : " + error.message);
+      AppDom.CreateAlert(
+        "Une erreur est survenue : ",
+        `${error.message}`,
+        "error"
+      );
     });
 }
