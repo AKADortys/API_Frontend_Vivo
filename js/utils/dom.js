@@ -158,16 +158,19 @@ export const AppDom = {
     const user = await AppStorage.get("active_user");
     const profile = document.getElementById("profile");
     profile.innerHTML = `
-        <h2>Bonjour, ${user.prenom} ${user.nom}</h2>
-        <p>Email : ${user.mail}</p>
-        <p>Téléphone : ${user.phone}</p>
-        <button class="btn" id="btn-logout">Se déconnecter</button>
+    <div class="content-child">
+      <h2>Bonjour, ${user.prenom} ${user.nom}</h2>
+      <p>Email : ${user.mail}</p>
+      <p>Téléphone : ${user.phone}</p>
+      <button class="btn" id="btn-logout">Se déconnecter</button>
+      <button class="btn-edit" id="btn-edit-profile">Modifier mes informations</button>
+    </div>
     `;
-    profile.addEventListener("click", (e) => {
+    profile.addEventListener("click", async (e) => {
       if (e.target.id === "btn-logout") {
         AppStorage.clear();
         console.log("Déconnexion réussie!");
-        Swal.fire("Vous êtes déconnecté!");
+        await Swal.fire("Vous êtes déconnecté!");
         document.getElementById("hidde_profile").style.display = "none";
         AppDom.init();
       }

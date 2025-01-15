@@ -2,12 +2,13 @@ main {
     padding: 0.1em;
     width: 95vw;
     height: 85vh;
-    margin: 1em auto;
+    margin: 0.5em auto;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     align-content: space-between;
-    /* background-color: rgba(100, 100, 99, 0.675); */
+    background-color: rgba(0, 0, 0, 0.675);
+    border: goldenrod inset 0.25em;
     transition: height 0.5s ease-in;
     overflow-y: auto;
     overflow-x: hidden;
@@ -45,15 +46,15 @@ main.main-shifted {
 .content-child {
     margin: 0;
     padding: 0.5em;
-    border: 0.1em solid black;
-    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
+    border: 0.1em solid gold;
+    /* box-shadow: 5px 5px 2px 0px rgb(163, 163, 163); */
     background-color: rgba(100, 100, 99, 0.675);
     transition: background-color 0.5s ease, transform 0.3s ease;
 }
 
 .content-child:hover {
     background-color: rgba(255, 255, 255, 0.7);
-    transform: scale(1.1);
+    transform: scale(1.09);
 }
 
 #accueil>img {

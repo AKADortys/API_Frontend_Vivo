@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Love+Light&display=swap');
+@import url('media.css');
+@import url('main.css');
+@import url('keyframes.css');
+@import url('horaire.css');
+@import url('header.css');
+@import url('footer.css');
 
 body {
     margin: 0;
@@ -55,44 +61,54 @@ h3 {
     position: absolute;
     top: 45%;
     margin: 0;
+    color: goldenrod;
     font-family: 'Love Light', cursive;
     font-size: 4em;
-    text-shadow: 3px 3px 2px rgb(40, 40, 40);
+    text-shadow: 6px 6px 4px rgb(110, 109, 109);
     animation: opacity-slide-up 0.5s 1 ease-in;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-del {
-    background-color: #f44336;
-}
-
-button:hover {
-    color: #EDB313 !important;
-    background: #6B686A;
-    background: linear-gradient(to top, #6B686A, #000000);
-}
-
+button,
 input[type="submit"] {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 1em;
+    border: none;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em;
     border: none;
     cursor: pointer;
 }
 
+.btn-del,
 input[type="reset"] {
     background-color: #f44336;
     color: white;
-    padding: 10px 20px;
+    padding: 1em;
     border: none;
     cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #3399ff;
+    color: white;
+    padding: 1em;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    color: #EDB313 !important;
+    background: #6B686A;
+    background: linear-gradient(to top, #6B686A, #000000);
 }
 
 

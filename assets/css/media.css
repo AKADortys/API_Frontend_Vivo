@@ -1,26 +1,26 @@
-@media  (max-width: 400px) {
-    body{
+@media (max-width: 400px) {
+    body {
         width: 400px;
 
     }
-    
-    #header-list{
+
+    #header-list {
         display: block;
     }
 
-    main{
+    main {
         width: 380px;
     }
 
-    .content-child:hover{
+    .content-child:hover {
         transform: scale(1);
     }
 
-    #accueil>img{
+    #accueil>img {
         width: 50%;
     }
 
-    #contact_coord{
+    #contact_coord {
         width: 100%;
     }
 
@@ -34,7 +34,7 @@
         margin: 0 auto;
     }
 
-    #LogoVivo{
+    #LogoVivo {
         height: 150px;
         width: 150px;
     }
@@ -43,16 +43,7 @@
         width: 70%;
     }
 
-    #Form_question{
-        width: 100%;
-    }
-
-    #newslettre{
-        width: 90%;
-        flex-wrap: wrap;
-    }
-
-    #newslettre>section{
+    #Form_question {
         width: 100%;
     }
 }
