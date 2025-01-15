@@ -173,6 +173,7 @@ export const AppDom = {
       }
     });
   },
+  //Méthode pour afficher une alerte SweetAlert
   CreateAlert: (title, text, icon) => {
     Swal.fire({
       title: title,

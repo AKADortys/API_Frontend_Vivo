@@ -47,6 +47,7 @@ export async function authFetch(url, options = {}) {
 // Rafraîchit le token via une API et le stocke dans IndexedDB
 async function refreshAccessToken() {
   try {
+    console.log("refresh access token");
     const accessToken = AppStorage.get("Token"); //récupération du token
     const response = await fetch("http://localhost:3000/auth/refresh", {
       method: "POST",
@@ -58,11 +59,8 @@ async function refreshAccessToken() {
 
     if (response.ok) {
       const data = await response.json();
-      AppStorage.set("Token", JSON.stringify(data.user)); //stockage
+      AppStorage.set("Token", JSON.stringify(data.accessToken)); //stockage
       return true;
-    } else {
-      console.warn("Échec du rafraîchissement du token :", response.statusText);
-      return false;
     }
   } catch (error) {
     console.error("Erreur lors du rafraîchissement du token :", error);
