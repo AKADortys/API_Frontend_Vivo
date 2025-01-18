@@ -94,23 +94,22 @@ export const AppDom = {
     const articles = await AppStorage.get("articles"); //récup des articles dans LS
     const section = document.getElementById("produit");
 
-    let contentHTML = `<table class="product">
-    <th>Nom</th> <th>Description</th> <th>Prix</th> <th>Action</th>`;
+    let contentHTML = ``;
 
     articles.forEach((e) => {
       if (e.available) {
         contentHTML += `
-                <tr>
-                    <td>${e.label}</td>
-                    <td>${e.content}</td>
-                    <td>${e.price} Euro</td>
-                    <td><input type="number" min="0" max="15" value="0" class="quantity" id="article${e.id}">
-                    <button class="btn" data-article-id="${e.id}">Ajouter au panier</button></td>
-                </tr>
+                    <div class="card-article">
+                      <h4>${e.label}</h4>
+                      <p>${e.content}</p>
+                      <p>${e.price} euro</p>
+                      <input type="number" min="0" max="15" value="0" class="quantity" id="article${e.id}">
+                      <button class="btn" data-article-id="${e.id}">Ajouter au panier</button></td>
+                    </div>
             `;
       }
     });
-    contentHTML += "</table>";
+    // contentHTML += "</div>";
     section.innerHTML = contentHTML;
     articlesListener();
   },
@@ -124,7 +123,7 @@ export const AppDom = {
     panier.innerHTML = "";
     if (articles.articleOrders !== null) {
       contentHTML += `
-                <div class="order-details">
+                <div class="content-child">
                 <h3>Panier</h3>
                 <table class="product">
                 <th>Nom</th> <th>Compte</th> <th>Total</th> <th>Action</th>
@@ -139,7 +138,7 @@ export const AppDom = {
                     </tr>
                 `;
       });
-      contentHTML += '</table></div> <div class="order">';
+      contentHTML += '</table></div> <div class="content-child">';
       if (order !== null) {
         contentHTML += `
                     <p>Total commande : <span>${order.totalPrice}</span> Euro</p>

@@ -11,13 +11,8 @@ export async function login(data) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-
-    if (!response.status === 401) {
-      AppDom.CreateAlert(
-        "La tentative de connection a échouée",
-        response.message,
-        "error"
-      );
+    if (response.status === 401) {
+      AppDom.CreateAlert("La tentative de connection a échouée", "", "error");
       return false;
     }
 

@@ -1,0 +1,33 @@
+:root {
+    /* Couleurs */
+    --color-goldenrod: goldenrod;
+    --color-black: black;
+    --color-grey: grey;
+    --color-light-grey: rgba(128, 128, 128, 0.697);
+    --color-dark-grey: rgba(100, 100, 99, 0.675);
+    --color-white: #FFFFFF;
+    --color-whitesmoke: whitesmoke;
+    --color-blue: blue;
+    --color-green: green;
+    --color-gold: gold;
+    --color-hover-bg: rgba(255, 255, 255, 0.7);
+    --color-table-bg: rgb(132, 54, 23);
+
+    /* Dimensions */
+    --border-width: 0.1em;
+    --border-inset: 0.2em;
+    --padding-small: 0.1em;
+    --padding-medium: 0.2em;
+    --padding-large: 0.5em;
+
+    /* Opacity and Transitions */
+    --transition-fast: 0.2s ease-in-out;
+    --transition-medium: 0.5s ease;
+    --transition-slow: 1s ease;
+    --opacity-hidden: 0;
+    --opacity-visible: 1;
+
+    /* Radius and Shadows */
+    --border-radius-circle: 100%;
+    --box-shadow-standard: 5px 5px 2px 0px rgba(0, 0, 0, 1);
+}

@@ -1,15 +1,14 @@
+/* Main Container */
 main {
-    padding: 0.1em;
+    padding: var(--padding-small);
     width: 95vw;
     height: 85vh;
-    margin: 0.5em auto;
+    margin: var(--padding-medium) auto;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     align-content: space-between;
-    background-color: rgba(0, 0, 0, 0.675);
-    border: goldenrod inset 0.25em;
-    transition: height 0.5s ease-in;
+    transition: height var(--transition-medium);
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -18,15 +17,19 @@ main.main-shifted {
     height: 100vh;
 }
 
+#accueil_present {
+    width: 50%;
+}
+
+/* Content */
 .contenue {
     display: none;
-    margin: 0;
     flex-wrap: wrap;
     width: 100%;
     min-height: 100%;
     max-height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease;
+    opacity: var(--opacity-hidden);
+    transition: opacity var(--transition-slow);
     overflow-y: auto;
 }
 
@@ -34,76 +37,64 @@ main.main-shifted {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    opacity: 1;
+    opacity: var(--opacity-visible);
 }
 
+/* Titles */
 .contenue>h2 {
     width: 90%;
     text-align: center;
     font-size: 2em;
 }
 
+/* Child Content */
 .content-child {
     margin: 0;
-    padding: 0.5em;
-    border: 0.1em solid gold;
-    /* box-shadow: 5px 5px 2px 0px rgb(163, 163, 163); */
-    background-color: rgba(100, 100, 99, 0.675);
-    transition: background-color 0.5s ease, transform 0.3s ease;
+    padding: var(--padding-large);
+    border: var(--border-width) solid var(--color-gold);
+    background-color: var(--color-dark-grey);
+    box-shadow: var(--box-shadow-standard);
+    transition: background-color var(--transition-medium), transform var(--transition-fast);
 }
 
 .content-child:hover {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: var(--color-hover-bg);
     transform: scale(1.09);
 }
 
+
+/* Images */
 #accueil>img {
     width: 15%;
     max-width: 500px;
     height: auto;
     object-fit: cover;
-    border: 0.1em solid black;
-    border-radius: 100%;
-    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
-    transition: transform 0.5s ease-in-out;
+    border: var(--border-width) solid var(--color-black);
+    border-radius: var(--border-radius-circle);
+    box-shadow: var(--box-shadow-standard);
+    transition: transform var(--transition-medium);
 }
 
 #accueil>img:hover {
     transform: scale(1.1);
 }
 
-
-#accueil_present {
-    width: 60%;
-    text-align: center;
-}
-
-
+/* Contact Section */
 #contact_coord {
     text-align: center;
 }
 
 #contact_coord>ul {
     list-style: none;
-    padding: 0.2em;
+    padding: var(--padding-medium);
     margin: 0;
-    background-color: rgba(128, 128, 128, 0.697);
-    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 1);
-    border: 0.2em outset goldenrod;
+    background-color: var(--color-light-grey);
+    box-shadow: var(--box-shadow-standard);
+    border: var(--border-inset) outset var(--color-goldenrod);
 }
 
 #contact_coord>ul>li {
-    padding: 0.1em;
-}
-
-#contact_coord a {
-    color: gold;
-    text-decoration: none;
-    transition: color 0.5s ease-in-out;
-}
-
-#contact_coord a:hover {
-    color: blue;
+    padding: var(--padding-small);
 }
 
 #contact_coord>ul>li>img {
@@ -111,126 +102,52 @@ main.main-shifted {
     height: auto;
 }
 
-#Form_question {
-    width: 30%;
+#contact_coord a {
+    color: var(--color-gold);
+    text-decoration: none;
+    transition: color var(--transition-medium);
 }
 
-#Form_question>table {
-    width: 100%;
-    text-align: center;
-    padding: 0.2em;
-    margin: 0;
-    color: gold;
-    background-color: rgba(128, 128, 128, 0.697);
-    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 1);
-    border: 0.2em outset goldenrod;
+#contact_coord a:hover {
+    color: var(--color-blue);
 }
 
-#Form_question>table td {
-    padding: 0.5em 0;
-}
-
-
-#accueil_offre {
-    width: 20%;
-    text-align: center;
-}
-
-
-#accueil_offre>ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#contact_form_question {
-    width: 30%;
-}
-
-
+/* Table */
 .product {
     width: 100%;
     text-align: center;
-    background-color: grey;
+    background-color: var(--color-grey);
     border-collapse: collapse;
-    border: 0.2em solid goldenrod;
+    border: var(--border-inset) solid var(--color-goldenrod);
 }
 
 .product th {
-    border-bottom: solid black 0.1em;
-    background-color: black;
-    color: whitesmoke;
-    border-bottom: 0.1em white solid;
+    border-bottom: var(--border-width) solid var(--color-white);
+    background-color: var(--color-black);
+    color: var(--color-whitesmoke);
+    padding: var(--padding-large);
+}
+
+.product td {
+    padding: var(--padding-medium);
+}
+
+.product td:nth-child(1) {
+    background-color: var(--color-table-bg);
+    color: var(--color-gold);
+    border-right: var(--border-width) solid var(--color-black);
+}
+
+.product td:nth-child(2) {
+    transition: transform var(--transition-fast);
 }
 
 .product td:nth-child(2):hover {
     transform: scale(1.1);
 }
 
-.product td:nth-child(2) {
-    transition: transform 0.2s ease-in-out;
-}
-
-
-.product td:nth-child(1) {
-    background-color: rgb(132, 54, 23);
-    color: gold;
-    border-right: black solid 0.1em;
-}
-
-.product td {
-    padding: 0.3em 0;
-}
-
 .product td:nth-child(3) {
-    color: green;
-    font-weight: bold;
-}
-
-
-.order-details {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 0.5em;
-    border: 0.1em solid black;
-    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 1);
-    background-color: rgba(100, 100, 99, 0.675);
-    transition: background-color 0.5s ease, transform 0.3s ease;
-}
-
-.order-details:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-    transform: scale(1.1);
-}
-
-.order {
-    width: 40%;
-    background-color: rgba(240, 248, 255, 0.51);
-    border: inset 0.2em goldenrod;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0.2em;
-    transition: transform 0.2s ease-in-out;
-}
-
-.order:hover {
-    transform: scale(1.1);
-}
-
-.order p {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    padding: 0.2em 0;
-    margin: 0.5em 0;
-}
-
-.order p>span {
-    color: green;
+    color: var(--color-green);
     font-weight: bold;
 }
 
@@ -243,4 +160,15 @@ main.main-shifted {
     color: #000000;
     border: 0.1em inset #f8e922;
     text-align: center;
+}
+
+.card-article {
+    border-radius: 0.2em;
+    margin: 1em;
+    width: 20%;
+    background-color: rgb(94, 43, 12);
+    color: var(--color-goldenrod);
+    padding: var(--padding-medium);
+    text-align: center;
+    box-shadow: var(--box-shadow-standard);
 }
