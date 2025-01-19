@@ -5,6 +5,7 @@ import { loginFormListeners } from "../components/loginForm.js";
 import { signinListeners } from "../components/signinForm.js";
 import { questionFormListener } from "../components/questionForm.js";
 import { articlesListener, cartListener } from "../components/cart.js";
+import { ProfileListener } from "../components/profile.js";
 
 //import des utilitaires
 import { getArticles } from "../api/article.js";
@@ -165,15 +166,7 @@ export const AppDom = {
       <button class="btn-edit" id="btn-edit-profile">Modifier mes informations</button>
     </div>
     `;
-    profile.addEventListener("click", async (e) => {
-      if (e.target.id === "btn-logout") {
-        AppStorage.clear();
-        console.log("Déconnexion réussie!");
-        await Swal.fire("Vous êtes déconnecté!");
-        document.getElementById("hidde_profile").style.display = "none";
-        AppDom.init();
-      }
-    });
+    ProfileListener();
   },
   //Méthode pour afficher une alerte SweetAlert
   CreateAlert: (title, text, icon) => {

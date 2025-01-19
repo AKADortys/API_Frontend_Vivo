@@ -3,7 +3,7 @@ import {
   addArticleToOrder,
   removeArticle,
 } from "../api/panier.js";
-import { OrderGetOrCreate } from "../api/order.js";
+import { OrderGetOrCreate, ConfirmOrder } from "../api/order.js";
 import { AppDom } from "../utils/dom.js";
 import { AppStorage } from "../utils/storage.js";
 
@@ -62,10 +62,9 @@ export async function cartListener() {
     btn.addEventListener("click", async function () {
       try {
         await removeArticle(id); //appel de la fonction pour la suppression d'un article du panier
-        await ArticlesOrder(); // récupérer le détails de la commande mis à jour
         await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
+        await ArticlesOrder(); // récupérer le détails de la commande mis à jour
         await AppDom.displayCart(); //afficher la mise à jour du panier
-        cartListener(); // Réattacher les écouteurs
         AppDom.CreateAlert("Article supprimé du panier", "", "success");
       } catch (error) {
         console.error(
@@ -79,5 +78,29 @@ export async function cartListener() {
         );
       }
     });
+  });
+
+  const confirmOrder = document.getElementById("btn-order");
+  confirmOrder.addEventListener("click", async function () {
+    try {
+      await ConfirmOrder(AppStorage.get("current_order").order.id); // appel de la fonction pour la confirmation de la commande
+      await AppStorage.remove("current_order"); // supprimer la commande courante
+      await AppStorage.remove("details_order"); // supprimer les détails de la commande
+      await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
+      await ArticlesOrder(); // récupérer le détails de la commande mis à jour
+      await AppDom.displayCart(); // afficher la mise à jour du panier
+      AppDom.CreateAlert(
+        "Commande confirmée",
+        "Merci de votre commande!",
+        "success"
+      );
+    } catch (error) {
+      console.error("Erreur lors de la confirmation de la commande :", error);
+      AppDom.CreateAlert(
+        "Une erreur est survenue",
+        "Une erreur est survenue lors de la confirmation de votre commande.",
+        "error"
+      );
+    }
   });
 }
