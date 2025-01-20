@@ -83,8 +83,8 @@ export const AppDom = {
     await getArticles();
     await AppDom.displayArticles();
     if (user) {
-      console.log("Utilisateur connecté :", user.nom);
       await AppDom.displayCart();
+      await AppDom.displayProfile();
       document.getElementById("hidde_profile").style.display = "block";
     }
     AppDom.addListeners();
@@ -157,7 +157,6 @@ export const AppDom = {
   displayProfile: async () => {
     const user = await AppStorage.get("active_user");
     const historic = await AppStorage.get("orderHistoric");
-    console.log(historic);
     const profile = document.getElementById("profile");
     let innerHTML = `
     <div class="content-child">
@@ -167,19 +166,39 @@ export const AppDom = {
       <button class="btn" id="btn-logout">Se déconnecter</button>
       <button class="btn-edit" id="btn-edit-profile">Modifier mes informations</button>
     </div>
-    <div class="content-child">
+    <div class="orders-history">
       <h2>Historique de commande</h2>
     `;
     historic.forEach((e) => {
+      console.log(e.detail.articleOrders);
+      const date = new Date(e.createdAt);
+      const jour = String(date.getDate()).padStart(2, "0");
+      const mois = String(date.getMonth() + 1).padStart(2, "0"); // Les mois commencent à 0
+      const annee = String(date.getFullYear()).slice(2); // On prend les deux derniers chiffres de l'année
+
+      const dateEuropeenne = `${jour}/${mois}/${annee}`;
       if (e.isConfirmed)
         innerHTML += `
-        <div class="order-history">
+        <div class="order-detail">
           <h3>Commande n°${e.id}</h3>
-          <p>Date : ${e.createdAt}</p>
+          <p>Date : ${dateEuropeenne}</p>
           <p>Total : ${e.totalPrice} Euro</p>
           <p>Quantité : ${e.totalQuantity} article(s)</p>
-        </div>
       `;
+      if (
+        e.detail.articleOrders.length > 0 ||
+        e.detail.articleOrders !== null
+      ) {
+        innerHTML += "<ul>";
+        e.detail.articleOrders.forEach((article) => {
+          innerHTML += `
+            <li>
+              ${article.label} X ${article.quantity}
+            </li>
+          `;
+        });
+        innerHTML += "</ul>";
+      }
     });
 
     innerHTML += "</div>";

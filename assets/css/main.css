@@ -169,6 +169,7 @@ main.main-shifted {
 
 .card-article {
     border-radius: 0.2em;
+    border: var(--border-inset) inset var(--color-goldenrod);
     margin: 1em;
     width: 20%;
     background-color: rgb(94, 43, 12);
@@ -176,4 +177,15 @@ main.main-shifted {
     padding: var(--padding-medium);
     text-align: center;
     box-shadow: var(--box-shadow-standard);
+}
+
+.orders-history {
+    width: 90%;
+    text-align: center;
+    margin: 1em 0;
+    background-color: var(--color-light-grey);
+    border-radius: 0.2em;
+    box-shadow: var(--box-shadow-standard);
+    padding: var(--padding-medium);
+    border: var(--border-inset) solid var(--color-goldenrod);
 }

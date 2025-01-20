@@ -3,9 +3,7 @@ project/
 ├── assets/              # Contient les ressources statiques (images, polices, etc.)
 │   ├── css/             # Fichiers CSS
 │   ├── images/          # Images utilisées dans le projet
-│
-├── data/                # Fichiers JSON ou scripts liés aux données locales
-│   └── mock-data.json   # Données fictives pour les tests
+|
 │
 ├── js/                  # Scripts JavaScript
 │   ├── api/             # Gestion des appels à l'API backend
