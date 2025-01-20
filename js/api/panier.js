@@ -33,6 +33,31 @@ export async function ArticlesOrder() {
   }
 }
 
+export async function ArticlesOrders(id) {
+  try {
+    const options = { method: "GET" };
+    const response = await authFetch(
+      `http://localhost:3000/ArticleOrder/article/${id}`,
+      options
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Erreur serveur : ${response.status} ${response.statusText}`
+      );
+    }
+
+    const Article = await response.json();
+    return Article;
+  } catch (err) {
+    console.error(
+      "Erreur lors de la récupération des articles de la commande :",
+      err
+    );
+    return null;
+  }
+}
+
 // Ajoute un article à la commande courante
 export async function addArticleToOrder(articleId, quantity) {
   try {

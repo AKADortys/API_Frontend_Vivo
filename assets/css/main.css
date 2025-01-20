@@ -1,16 +1,21 @@
 /* Main Container */
 main {
     padding: var(--padding-small);
-    width: 95vw;
-    height: 85vh;
-    margin: var(--padding-medium) auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    align-content: space-between;
     transition: height var(--transition-medium);
+    width: 90%;
+    height: 90vh;
+    max-height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    gap: 0.8em;
 }
 
 main.main-shifted {

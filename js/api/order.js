@@ -1,5 +1,6 @@
 import { authFetch } from "./auth.js";
 import { AppStorage } from "../utils/storage.js";
+import { ArticlesOrders } from "./panier.js";
 
 // Récupère ou crée une commande pour l'utilisateur courant
 export async function OrderGetOrCreate(id) {
@@ -43,6 +44,34 @@ export async function ConfirmOrder(id) {
     return response.json();
   } catch (err) {
     console.error("Erreur lors de la confirmation de la commande :", err);
+    return null;
+  }
+}
+
+export async function GetOrderHistoric(id) {
+  try {
+    const options = { method: "GET" };
+    const response = await authFetch(
+      `http://localhost:3000/order/getUserOrders/${id}`,
+      options
+    );
+    const historic = await response.json();
+    let orderHistoric = [];
+
+    for (const element of historic) {
+      const detail = await ArticlesOrders(element.id);
+      if (!detail) continue; // Si la commande n'existe pas, on passe à la suivante
+      delete detail.ok;
+      orderHistoric.push({ ...element, detail });
+    }
+
+    // Stockage dans localStorage après avoir construit l'objet complet
+    AppStorage.set("orderHistoric", orderHistoric);
+  } catch (err) {
+    console.error(
+      "Erreur lors de la récupération de l'historique des commandes :",
+      err
+    );
     return null;
   }
 }

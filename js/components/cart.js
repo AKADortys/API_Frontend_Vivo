@@ -3,7 +3,11 @@ import {
   addArticleToOrder,
   removeArticle,
 } from "../api/panier.js";
-import { OrderGetOrCreate, ConfirmOrder } from "../api/order.js";
+import {
+  OrderGetOrCreate,
+  ConfirmOrder,
+  GetOrderHistoric,
+} from "../api/order.js";
 import { AppDom } from "../utils/dom.js";
 import { AppStorage } from "../utils/storage.js";
 
@@ -88,6 +92,8 @@ export async function cartListener() {
       await AppStorage.remove("details_order"); // supprimer les détails de la commande
       await OrderGetOrCreate(AppStorage.get("active_user").id_user); // récupérer la commande mis à jour
       await ArticlesOrder(); // récupérer le détails de la commande mis à jour
+      await GetOrderHistoric(AppStorage.get("active_user").id_user);
+      await AppDom.displayProfile();
       await AppDom.displayCart(); // afficher la mise à jour du panier
       AppDom.CreateAlert(
         "Commande confirmée",

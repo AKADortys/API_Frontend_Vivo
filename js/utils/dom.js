@@ -156,8 +156,10 @@ export const AppDom = {
   //Méthode pour afficher les parametres utilisateur
   displayProfile: async () => {
     const user = await AppStorage.get("active_user");
+    const historic = await AppStorage.get("orderHistoric");
+    console.log(historic);
     const profile = document.getElementById("profile");
-    profile.innerHTML = `
+    let innerHTML = `
     <div class="content-child">
       <h2>Bonjour, ${user.prenom} ${user.nom}</h2>
       <p>Email : ${user.mail}</p>
@@ -165,7 +167,23 @@ export const AppDom = {
       <button class="btn" id="btn-logout">Se déconnecter</button>
       <button class="btn-edit" id="btn-edit-profile">Modifier mes informations</button>
     </div>
+    <div class="content-child">
+      <h2>Historique de commande</h2>
     `;
+    historic.forEach((e) => {
+      if (e.isConfirmed)
+        innerHTML += `
+        <div class="order-history">
+          <h3>Commande n°${e.id}</h3>
+          <p>Date : ${e.createdAt}</p>
+          <p>Total : ${e.totalPrice} Euro</p>
+          <p>Quantité : ${e.totalQuantity} article(s)</p>
+        </div>
+      `;
+    });
+
+    innerHTML += "</div>";
+    profile.innerHTML = innerHTML;
     ProfileListener();
   },
   //Méthode pour afficher une alerte SweetAlert

@@ -1,6 +1,7 @@
 import { OrderGetOrCreate } from "./order.js";
 import { AppStorage } from "../utils/storage.js";
 import { ArticlesOrder } from "./panier.js";
+import { GetOrderHistoric } from "./order.js";
 import { AppDom } from "../utils/dom.js";
 
 //requêtes pour la connection
@@ -28,10 +29,10 @@ export async function login(data) {
       const order = await OrderGetOrCreate(result.user.id_user);
       AppStorage.set("current_order", order);
       await ArticlesOrder();
+      await GetOrderHistoric(result.user.id_user);
       AppDom.displayCart();
       document.getElementById("hidde_profile").style.display = "block";
       AppDom.displayProfile();
-      console.log("Commande trouvé à la connexion");
     }
   } catch (error) {
     console.error("Une erreur est survenue :", error);
@@ -53,7 +54,7 @@ export async function register(data) {
     body: JSON.stringify(data),
   })
     .then((response) => {
-      if (!response.ok) {
+      if (!response.status !== 200) {
         throw new Error("Erreur lors de l'ajout de l'utilisateur");
       }
       return response.json();
