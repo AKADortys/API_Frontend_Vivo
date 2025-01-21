@@ -194,7 +194,7 @@ export const AppDom = {
           e.detail.articleOrders.forEach((article) => {
             innerHTML += `
             <li>
-              ${article.label} X ${article.quantity} <span>${article.price * article.quantity}</span>
+              ${article.label} X ${article.quantity} <span>${article.price * article.quantity} Eu</span>
             </li>
           `;
           });
