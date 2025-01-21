@@ -121,9 +121,9 @@ input[type="reset"]:hover,
 }
 
 
-input[type="text"],
-input[type="password"],
-input[type="mail"],
+main input[type="text"],
+main input[type="password"],
+main input[type="mail"],
 textarea {
     font-size: 1.3em;
     font-style: italic;

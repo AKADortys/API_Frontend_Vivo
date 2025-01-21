@@ -170,7 +170,6 @@ export const AppDom = {
       <h2>Historique de commande</h2>
     `;
     historic.forEach((e) => {
-      console.log(e.detail.articleOrders);
       const date = new Date(e.createdAt);
       const jour = String(date.getDate()).padStart(2, "0");
       const mois = String(date.getMonth() + 1).padStart(2, "0"); // Les mois commencent à 0

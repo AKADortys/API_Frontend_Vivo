@@ -4,6 +4,7 @@ import { AppStorage } from "../utils/storage.js";
 import { ArticlesOrder } from "./panier.js";
 import { GetOrderHistoric } from "./order.js";
 import { AppDom } from "../utils/dom.js";
+import { authFetch } from "./auth.js";
 
 //requêtes pour la connection
 export async function login(data) {
@@ -72,4 +73,43 @@ export async function register(data) {
         "error"
       );
     });
+}
+export async function update(data) {
+  try {
+    const userId = AppStorage.get("active_user")?.id_user;
+    if (!userId) {
+      throw new Error("Utilisateur non identifié. Veuillez vous reconnecter.");
+    }
+
+    const url = `${endPoint.Base_url}user/updateUser/${userId}`;
+    console.log(`URL : ${url}`);
+
+    const response = await authFetch(url, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (result.utilisateur) {
+      AppStorage.set("active_user", result.utilisateur); // Mise à jour des données locales
+      AppDom.CreateAlert(
+        "Vos informations ont été mises à jour!",
+        "",
+        "success"
+      );
+      return true; // Indique un succès
+    } else {
+      throw new Error("La mise à jour a échoué.");
+    }
+  } catch (error) {
+    console.error("Une erreur est survenue :", error);
+    AppDom.CreateAlert(
+      "Une erreur est survenue lors de la mise à jour",
+      `${error.message}`,
+      "error"
+    );
+    return false; // Indique un échec
+  }
 }
