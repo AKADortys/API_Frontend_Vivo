@@ -45,7 +45,6 @@ export async function login(data) {
     );
   }
 }
-
 //requêtes pour la création d'un compte
 export async function register(data) {
   fetch(`${endPoint.Base_url}auth/register`, {
