@@ -1,4 +1,5 @@
 import { authFetch } from "./auth.js";
+import { endPoint } from "./endpoint.js";
 import { AppStorage } from "../utils/storage.js";
 import { ArticlesOrders } from "./panier.js";
 
@@ -7,7 +8,7 @@ export async function OrderGetOrCreate(id) {
   try {
     const options = { method: "GET" };
     const response = await authFetch(
-      `http://localhost:3000/order/current/${id}`,
+      `${endPoint.Base_url}order/current/${id}`,
       options
     );
 
@@ -31,7 +32,7 @@ export async function ConfirmOrder(id) {
   try {
     const options = { method: "PUT" };
     const response = await authFetch(
-      `http://localhost:3000/order/${id}/confirm`,
+      `${endPoint.Base_url}order/${id}/confirm`,
       options
     );
 
@@ -52,7 +53,7 @@ export async function GetOrderHistoric(id) {
   try {
     const options = { method: "GET" };
     const response = await authFetch(
-      `http://localhost:3000/order/getUserOrders/${id}`,
+      `${endPoint.Base_url}order/getUserOrders/${id}`,
       options
     );
     const historic = await response.json();

@@ -1,4 +1,5 @@
 import { authFetch } from "./auth.js";
+import { endPoint } from "./endpoint.js";
 import { AppStorage } from "../utils/storage.js";
 
 // Récupère la liste des articles d'une commande
@@ -11,7 +12,7 @@ export async function ArticlesOrder() {
     }
     const options = { method: "GET" };
     const response = await authFetch(
-      `http://localhost:3000/ArticleOrder/article/${commande.id}`,
+      `${endPoint.Base_url}ArticleOrder/article/${commande.id}`,
       options
     );
 
@@ -37,7 +38,7 @@ export async function ArticlesOrders(id) {
   try {
     const options = { method: "GET" };
     const response = await authFetch(
-      `http://localhost:3000/ArticleOrder/article/${id}`,
+      `${endPoint.Base_url}ArticleOrder/article/${id}`,
       options
     );
 
@@ -69,7 +70,7 @@ export async function addArticleToOrder(articleId, quantity) {
     const data = { id_article: articleId, quantity: quantity };
     const options = { method: "POST", body: JSON.stringify(data) };
     const response = await authFetch(
-      `http://localhost:3000/order/${commande.id}/articlesAdd`,
+      `${endPoint.Base_url}order/${commande.id}/articlesAdd`,
       options
     );
 
@@ -92,7 +93,7 @@ export async function removeArticle(articleId) {
     const data = { id_article: articleId };
     const options = { method: "DELETE", body: JSON.stringify(data) };
     const response = await authFetch(
-      `http://localhost:3000/order/${orderId}/articlesDel`,
+      `${endPoint.Base_url}order/${orderId}/articlesDel`,
       options
     );
     if (!response.ok) {

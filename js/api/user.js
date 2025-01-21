@@ -1,4 +1,5 @@
 import { OrderGetOrCreate } from "./order.js";
+import { endPoint } from "./endpoint.js";
 import { AppStorage } from "../utils/storage.js";
 import { ArticlesOrder } from "./panier.js";
 import { GetOrderHistoric } from "./order.js";
@@ -7,7 +8,7 @@ import { AppDom } from "../utils/dom.js";
 //requêtes pour la connection
 export async function login(data) {
   try {
-    const response = await fetch("http://localhost:3000/auth/login", {
+    const response = await fetch(`${endPoint.Base_url}auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -46,7 +47,7 @@ export async function login(data) {
 
 //requêtes pour la création d'un compte
 export async function register(data) {
-  fetch("http://localhost:3000/auth/register", {
+  fetch(`${endPoint.Base_url}auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

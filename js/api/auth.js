@@ -1,4 +1,5 @@
 import { AppStorage } from "../utils/storage.js";
+import { endPoint } from "./endpoint.js";
 import { AppDom } from "../utils/dom.js";
 // Requête fetch avec authentification
 export async function authFetch(url, options = {}) {
@@ -49,7 +50,7 @@ async function refreshAccessToken() {
   try {
     console.log("refresh access token");
     const accessToken = AppStorage.get("Token"); //récupération du token
-    const response = await fetch("http://localhost:3000/auth/refresh", {
+    const response = await fetch(`${endPoint.Base_url}auth/refresh`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

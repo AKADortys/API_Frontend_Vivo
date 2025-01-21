@@ -177,27 +177,30 @@ export const AppDom = {
       const annee = String(date.getFullYear()).slice(2); // On prend les deux derniers chiffres de l'année
 
       const dateEuropeenne = `${jour}/${mois}/${annee}`;
-      if (e.isConfirmed)
+      if (e.isConfirmed) {
         innerHTML += `
-        <div class="order-detail">
+      <div class="order-detail">
+        <div>
           <h3>Commande n°${e.id}</h3>
           <p>Date : ${dateEuropeenne}</p>
           <p>Total : ${e.totalPrice} Euro</p>
           <p>Quantité : ${e.totalQuantity} article(s)</p>
+        </div>
       `;
-      if (
-        e.detail.articleOrders.length > 0 ||
-        e.detail.articleOrders !== null
-      ) {
-        innerHTML += "<ul>";
-        e.detail.articleOrders.forEach((article) => {
-          innerHTML += `
+        if (
+          e.detail.articleOrders.length > 0 ||
+          e.detail.articleOrders !== null
+        ) {
+          innerHTML += "<ul><h3>Détails</h3>";
+          e.detail.articleOrders.forEach((article) => {
+            innerHTML += `
             <li>
-              ${article.label} X ${article.quantity}
+              ${article.label} X ${article.quantity} <span>${article.price * article.quantity}</span>
             </li>
           `;
-        });
-        innerHTML += "</ul>";
+          });
+          innerHTML += "</ul></div>";
+        }
       }
     });
 
